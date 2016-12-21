@@ -1,0 +1,65 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="text-white">Add new award structure</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-3">
+                        <div class="form-group">
+                            <label for="caption">Caption</label>
+                            <input class="form-control" id="caption" placeholder="Award caption" ng-model="award.caption">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="winners">Winners</label>
+                            <input type="number" min="1" class="form-control" id="winners" ng-model="award.winners">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select id="type" class="form-control" ng-model="award.type">
+                                <option value="reward" selected>Rewards</option>
+                                <option value="share">Share</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row modal-section">
+                    <div class="col-md-6 col-md-offset-3 playerstats innerscroll" style="height: 300px;">
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Share / Reward</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in range(award.winners) track by $index">
+                                <td style="width: 100px;">{{$index+1}}</td>
+                                <td style="width: 100px;"><input class="form-control" type="number" max="1" ng-pattern="/^[+-]?\d+(\.\d+)?$/" ng-if="award.type == 'share'" ng-model="award.rewards[$index].share"><input class="form-control" type="text" ng-if="award.type == 'reward'" ng-model="award.rewards[$index].share"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row modal-section">
+                    <div class="col-md-offset-3 col-md-2">
+                        <button class="greenbtntbl" ng-click="createAward()">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

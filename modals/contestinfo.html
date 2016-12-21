@@ -1,0 +1,108 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Contest Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row text-center">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="nav nav-pills contestinfo nav-justified" style="width: 100%;">
+                            <li ng-class="{active: infotab == 'info'}"><a ng-click="infotab = 'info'">Info</a></li>
+                            <li ng-class="{active: infotab == 'matches'}"><a ng-click="infotab = 'matches'">Matches</a></li>
+                            <li ng-class="{active: infotab == 'prices'}"><a ng-click="infotab = 'prices'">Prizes</a></li>
+                            <li ng-class="{active: infotab == 'entrants'}"><a ng-click="infotab = 'entrants'">Entrants</a></li>
+                            <li ng-class="{active: infotab == 'rules'}"><a ng-click="infotab = 'rules'">Rules</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div ng-class="{active: infotab == 'info'}" class="tab-pane fade in">
+                        <div class="row modal-section">
+                            <div class="col-md-12 text-center">
+                                <img src="images/flag1.png">
+                            </div>
+                        </div>
+                        <div class="row modal-section">
+                            <div class="col-md-12 text-center">
+                                <h3>{{contest.competition}}</h3>
+                                <h4>{{(capitalize(contest.type)).replace('_', ' ')}} - Full round</h4>
+                                <h4>Fee: {{contest.entry_fee}} - Prize: {{(contest.entry_fee * contest.entrants) * 0.9}}</h4>
+                            </div>
+                        </div>
+                        <div class="row modal-section">
+                            <div class="col-md-12 text-center">
+                                <h5 class="players_name_text_white">Starts in</h5>
+                                <h3 class="redcolor" moment-interval="60000"><span class="glyphicon glyphicon-time" style="font-size: 20px; margin-right: 10px;"></span>{{(contest.start_at | amUtc | amLocal | amDifference : null : 'minutes' | amDurationFormat: 'minutes')}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-class="{active: infotab == 'matches'}" class="tab-pane fade in">
+                        <div class="row modal-section">
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row innerscroll" style="height: 350px;">
+                                    <div class="col-md-6" ng-repeat="match in contest.matches">
+                                        <p class="text-white">
+                                            {{match.team1.name + ' vs. ' + match.team2.name}}
+                                            <br>
+                                            <small>{{match.scheduled_on}}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-class="{active: infotab == 'prices'}" class="tab-pane fade in">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h5 class="players_name_text_white">{{contest.award.name}}</h5>
+                            </div>
+                        </div>
+                        <ul class="modal-section list-group">
+                            <li class="list-group-item list-group-item-dark" ng-repeat="awarditem in contest.award.items">
+                                <span class="pull-left players_name_text_white">{{ordinal_suffix_of($index+1)}}</span>
+                                <span class="pull-right text-bright-green">{{awarditem.share * ((contest.entrants * contest.entry_fee) * 0.9)}} EUR</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div ng-class="{active: infotab == 'entrants'}" class="tab-pane fade in">
+                        <div class="row modal-section">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6" ng-repeat="user in contest.users track by index">
+                                        <span class="text-bright-green">{{$index+1}}</span> <span class="players_name_text_white">{{user.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-class="{active: infotab == 'rules'}" class="tab-pane fade in">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

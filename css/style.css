@@ -1,0 +1,856 @@
+@font-face {
+   font-family:Helvetica_bold;
+   src:url(../fonts/Helvetica-Bold.ttf);
+}
+@font-face {
+   font-family:Helvetica-Regular;
+   src:url(../fonts/HelveticaNeueDeskUI.ttf);
+}
+@font-face {
+   font-family:Helvetica-Light;
+   src:url(../fonts/Helvetica-Light.ttf);
+}
+*{font-family:Helvetica-Regular;}
+
+a {
+    cursor: pointer;
+}
+
+.checkbox{ margin:0px; padding:0px;}
+
+.checkbox label:after
+{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr
+{
+    position: relative;
+    display: inline-block;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin-left: 15px;
+}
+
+.checkbox .cr .cr-icon
+{
+    position: absolute;
+    font-size: 10px;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+	color:#FFF;
+}
+
+.checkbox label input[type="checkbox"]
+{ visibility:hidden;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon
+{
+    transform: scale(0) rotateZ(0deg);
+    opacity: 0;
+    transition: all .0s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon
+{
+    transform: scale(1) rotateZ(0deg);
+    opacity: 10;
+}
+
+
+.checkbox label input[type="checkbox"]:checked + .cr
+{
+	border:2px solid #FFF;
+}
+.checkbox label{ padding-left:0px !important; }
+.signuplabel {
+    color: #fff;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.img-full {
+    width: 100%;
+    height: auto;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -30px;
+}
+
+.fcol{font-family:Helvetica_bold; float:right; font-size:13px; margin-bottom:0px;}
+.fcol1{  font-family:Helvetica-Light;font-size:13px; float:right; margin-bottom:0px;}
+.checkboxcheck{float:right; margin-top:9px;}
+.checkboxtxt{float:right; width:84%;color:#fff;}
+.checkboxtxtall{float: right;width: 20%;line-height: 42px;color:#fff;}
+.checkboxflbox{ float:left;}
+.matchTxt-width{ margin-top:10px;}
+.checbocnextsldr{ border:none; margin-right:-50px;}
+.allcheckbox{ width:100%; border-bottom:1px solid #1a1a1a;}
+.allcheckbox1{ width:100%; border-bottom:0px;}
+.backall{ float:left; margin-top:7px; margin-left:10px; margin-right:8px;}
+.modal-body {
+    /*padding: 50px;*/
+    color: #999;
+}
+.modal-content {
+    background: url('../images/popupbackground.png');
+    background-position: bottom right;
+}
+.modal-header {
+    border-bottom: none;
+    color: #e4e4e4;
+}
+.modal-footer {
+    margin-top: 50px;
+    border-top: none;
+}
+.contestinfo>li>a {
+    padding: 5px 15px;
+    width: 100%;
+}
+
+.contestinfo>li>a {
+    background-color: #2f2f2f;
+    color: #999;
+}
+
+.contestinfo>li {
+    border: 3px solid #000;
+}
+
+.contestinfo>li:first-child {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.contestinfo>li:last-child {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.text-bright-green {
+    color: #00CC00;
+    font-weight: bold;
+}
+.text-white {
+    color: #fff;
+}
+#referfriends {
+    background-image: url('../images/referbackground.png');
+}
+#livepick8 {
+    background-image: url('../images/livebackground.png');
+    background-size: cover;
+    background-color: rgba(100,100,100,0.4);
+}
+.padding-horizontal {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.padding-vertical {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.livestrip {
+    background-image: url('../images/timestripe.png');
+    background-position: right;
+    height: 48px;
+}
+.livesection {
+    background-color: #000;
+}
+.innerscroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.border-div {
+    border-top: 4px solid #00CC00;
+    width: 90px;
+    margin: auto;
+}
+.contestinfo>li.active>a, .contestinfo>li.active>a:focus, .contestinfo>li.active>a:hover {
+    background-color: #555656;
+}
+
+.contestinfo>li>a:focus, .contestinfo>li>a:hover {
+    background-color: #555656;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.list-group-item-dark {
+    background-color: #3b3b3b;
+    border-bottom: 1px solid #000;
+    height: 41px;
+}
+
+button.close {
+    float: left;
+    font-size: 34px;
+    color: #fff;
+    font-weight: 100;
+}
+.modal-title {
+    margin-left: 40px;
+    line-height: 1.9;
+}
+.modal-section {
+    margin: 20px 5px 5px 5px;
+}
+.row .pickrow {
+    padding-bottom: 20px;
+}
+.joinContestSelect {
+    background-color: #000;
+    border: 0.1px solid #666;
+}
+.row .playerlist {
+    border-top: 0.1px solid #666;
+    padding: 10px;
+}
+.playersection {
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.modalplayersection {
+    height: 300px;
+    overflow: scroll;
+}
+.leagueFilterRow {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.leaguebox {
+    width: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.animated{ visibility:visible !important;}
+.betplayeranimate{ visibility:hidden;}
+.fanplayer{ visibility:hidden;}
+.homebannervideo{ visibility:hidden;}
+.homepagefooer .footerlinkheader{ visibility:hidden;}
+.homepagefooer .footerlink{ visibility:hidden;}
+
+.has-error {
+    background-color: #f9cccc;
+    border: 2px solid #a94442;
+}
+
+.has-warning {
+    background-color: #f9caa7;
+    border: 2px solid #ec971f;
+}
+
+.panel-normal-heading {
+    padding: 5px !important;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	vertical-align:middle !important;
+	border-top:none;
+	border-bottom:none;
+}
+.tabtable thead tr{
+	    height: 50px;
+		font-size:12px;
+}
+.tabtable th{ 
+white-space:nowrap; 
+}
+.first_th{
+	padding-left:52px !important;
+}
+#zone{
+	font-size:18px;
+}
+.tabtable thead {
+	margin-bottom:2px;
+}
+.header{ border-radius:0px !important; height:75px; background-color:#202020; margin-bottom:0px !important; background: -webkit-linear-gradient(#222222, #191819); background: -o-linear-gradient(#222222, #191819); background: -moz-linear-gradient(#222222, #191819);   background: linear-gradient(#222222, #191819); }
+.header .container-fluid{background: url(../images/header_bg.png); background-position:right; background-repeat:no-repeat;}
+.logo{ padding:5px 28px !important; margin-right:7px;}
+.logo img{ width:100%; background-size:100% 100%;} 
+.blod_font{font-weight:bold;}
+.header_menu li{ border-left:1px solid #000; padding:20px 0; }
+.header_menu li:last-child{ border-right:1px solid #000;}
+.header_menu li a{ line-height:24px; height:34px; min-width:120px; font-size:15px; color:#fff !important; text-align:center;  padding:0px 30px!important;  } 
+.header_menu li.active a{ background-color:transparent !important; color:#51ca44 !important; border-left:1px solid #51ca44;border-right:1px solid #51ca44;margin:0 -1px; z-index:1;}
+
+.header_menu li.redactive a{ background-color:transparent !important; color:#fd0a04 !important; border-left:1px solid #fd0a04;border-right:1px solid #fd0a04;margin:0 -1px; z-index:1;}
+
+.refer{max-width:146px; text-align:center; line-height:17px !important;}
+.greenbtn{ background-color:#46bd38; background: url(../images/btn.png); color:#fff !important; border-radius:5px;font-family:Helvetica_bold; font-weight:bold; padding:12px 20px !important; margin-top:12px; font-size:14px; background-repeat:no-repeat; text-align:center; background-position:center center;}
+.greentxt{ color:#51ca44; font-family:Helvetica_bold; margin-left:10px; margin-top:0px; float:left; }
+.username{ color:#fff !important; font-size:14px;}
+.mobilemenu{ margin-top:20px !important;}
+.userdrop{ background-color:#202020 !important;}
+.userdrop li a{ color:#fff !important; border-bottom:1px solid #000; font-size:14px; padding:8px;}
+.userdrop li:last-child a{border-bottom:0px solid #000; }
+.userdrop li a:hover{ background-color:#000;color:#51ca44 !important;} 
+.userdrop li a:active{ background-color:#000;} 
+.userdrop li a:focus{ background-color:#000;} 
+.depostfndbtn{ margin-right:12px; margin-left:20px;}
+.usernametxt{ float:left; margin:0 10px;}
+.username img{ float:left;}
+.homevideoboxpart1{ width:85%; margin-left:10%; margin-right:5%;}
+.homevideoboxpart2{ width:85%; margin-left:5%; margin-right:10%;}
+.homevideoboxpart1 img{ width:100%;background-size:100% 100%;}
+.homevideoboxpart2 img{ width:100%;background-size:100% 100%;}
+.hometab{background: #f8f8f8; background: -webkit-linear-gradient(#fefefe, #f8f8f8); background: -o-linear-gradient(#fefefe, #f8f8f8); background: -moz-linear-gradient(#fefefe, #f8f8f8);   background: linear-gradient(#fefefe, #f8f8f8);}
+.hometab li{ border-right:1px solid #d3d3d3; }
+.hometab li.active a{border-radius:0px !important;}
+.hometab li a{ color:#000; padding:13px 10px !important; line-height:44px;font-family:Helvetica_bold;}
+.greenbtnbg{ background-image:url(../images/btn.png); height:44px; border:none; background-size:100% 100%; background-color:transparent; padding:5px 15px; color:#fff; font-family:Helvetica_bold; line-height:30px;}
+.leftarrow{ float:left; margin-top:5px; margin-left:10px;}
+.homevideobox{ padding:30px 0 40px 0; background:#000000;}
+.gmaetypecntn{ list-style:none; display:inline; float:left; margin-left:0px; margin-top:30px; padding-left:25px;}
+.gmaetypecntn li{ float:left; margin-left:10px;} 
+.gmaetypecntn li span{ float:left; font-size:14px; line-height:30px;font-family:Helvetica_bold;}
+.trueicon{ width:28px; height:28px; background-size:100% 100%; margin-left:10px; float: left;}
+.changepswd{ color:#000; margin-bottom:15px; font-size:18px; float:left; margin-left:15px;}
+.changepswd:hover{ text-decoration:none; color:#000;}
+.changepswd span{ margin-left:10px;} 
+.redfield{color:#e41919;}
+.greenfield{color:#46bd38;}
+.footer{ background:#000; padding:40px 0 50px 0;}
+.footerlinkheader{ color:#51ca44; font-family:Helvetica_bold; font-size:15px;}
+.footerlink{ list-style:none; float:left; width:100%; margin:0; padding:0;}
+.footerlink li{ float:left; width:100%;}
+.footerlink li a{ float:left; width:100%; font-size:14px; color:#fff; line-height:30px;}
+.footerlink li a:hover{ color:#51ca44; text-decoration:none;}
+.footerlinkicon{ width:25px; height:25px; float:left; background-size:100% 100%; margin-right:10px;}
+.appstore{ width:123px; height:35px;float:left; background-size:100% 100%; margin-top:5px;}
+.footer_container{ width:850px; margin:0 auto;}
+.footerlastimg{ width:100%; }
+.footerlastimg img{width:100%;}
+.tabtable {  padding:15px;}
+.tabtable td{  font-family:Helvetica_bold; font-size:12px;}
+.tabtable tr td:first-child{ min-width:160px;}
+.tabtable thead{ background:#f9f9f9;}
+.flag{ margin-right:12px;}
+.greenbtntbl{ background-image:url(../images/btn.png); height:44px; border:none; background-size:100% 100%; background-color:transparent; padding:5px 20px; color:#fff; font-family:Helvetica_bold; line-height:30px; width:100%;}
+.whitebtntbl{ background-image:url(../images/btn1.png); height:44px; border:none; background-size:100% 100%; background-color:transparent; padding:5px 15px; color:#fff; font-family:Helvetica_bold; line-height:30px; width:100%; color:#111;}
+.redbtntbl{ background-image:url(../images/btn2.png); height:44px; border:none; background-size:100% 100%; background-color:transparent; padding:5px 15px; color:#fff; font-family:Helvetica_bold; line-height:30px; width:100%; color:#fff;}
+
+.tablebox{ width:100%; float:left; padding:15px 25px; overflow:auto;}
+.mycontesttbl{padding:0 !important; margin-top:5px; }
+#myacountform{ margin-top:25px;}
+
+
+.myacountbtn{ width:180px !important; float:left; margin-left:15px; margin-top:25px; padding:10px; height:52px;font-size:17px;}
+.myacntpage{ margin-bottom:60px; padding:0 25px;}
+.myacntpage h2{ margin:35px;}
+.myacntpage label{ font-family:Helvetica-Regular !important; font-weight:normal !important; font-size:18px;}
+.chnagepswdform{ display:none;}
+#myacountform .form-control { height:50px !important; margin-bottom:25px;}
+.formpart{ padding:0 35px;}
+.tbltrueicon{ width:28px; height:28px; background-size:100% 100%; margin-right:10px; margin-left:10px; float: right;}
+.tblfield{ float:right; line-height:28px; min-width:20px;}
+.challageinnerbox{ width:100%; float:left; margin:20px 0 0 0;}
+.challageinnerbox h4{ width:100%; float:left; text-align:center;font-family:Helvetica_bold;}
+.challageinnerbox p{ width:100%; float:left; text-align:center; margin-bottom:0px; font-size:16px;}
+.challageinnerbox h5{ width:100%; float:left; text-align:center;font-family:Helvetica_bold;font-size:16px;}
+.challenge_sociallink{ width:100%; float:left; margin:40px 0 50px 0;}
+.challenge_sociallink ul{ list-style:none; width:450px; margin:0 auto;}
+.challenge_sociallink li{ float:left; width:100px; display:inline;} 
+.challenge_sociallink li img{ float:left; width:100%; background-size:100% 100%;} 
+.challenge_sociallink li .cstext{ text-align:center; color:#3ca533; float:left; font-size:16px; width:100%; }
+.challenge_sociallink li .csicon{width:50px;margin-left:25px; float:left;}
+.createcontstbtn{ padding:5px 10px;}
+.aboutpage{ padding:40px ;}
+.aboutpage h2{ margin:0px 0 10px 0!important; font-size:34px;}
+.aboutparagraph{ font-size:16px; line-height:32px; margin:20px 0;}
+.aboutsubhed{ padding-top:20px;}
+.loginbtn{ background-color:#343434; padding:5px 15px; border-radius:17px; text-align:center; line-height:4px !important; margin-top:20px; height:35px; width:100px; }
+.loginbtn:hover{ background-color:#343434 !important;}
+.loginbtn:active{ background-color:#343434 !important;}
+.loginbtn:focus{ background-color:#343434 !important;}
+.logindrop{ padding:10px; min-width:182px !important; background-color:#343434 !important; margin-top:10px !important; right:-35px !important;}
+.logindrop input{ border-radius:0px !important;padding: 3px 12px !important; height:26px !important;}
+.signupdrop{ padding:10px; min-width:450px !important; background-color:#343434 !important; margin-top:10px !important; right:-5px !important;}
+.remeberme{ color:#fff; line-height:31px;}
+.loginformsubmit{ border:none; width:100%; margin-top:0px !important;}
+.forgotpswd{ color:#fff; width:100%; text-align:center; float:left; margin-top:5px;}
+.signupbtn{ min-width:150px;}
+.forgotpswd:hover{ color:#51ca44; text-decoration:none;}
+
+.howtoworkslider_img .item{ width:70%; margin-left:15%;}
+.howtoplayTitle{ font-size:40px; width:100%; text-align:center; margin-top:40px;  font-family:Helvetica-Light;}
+.sliderarrow{background-image:none !important;  top:50% !important;  }
+.sliderarrow img{ width:50px; background-size:100% 100%; margin-top:-25px;}
+.carousel-indicators .active { background-color:#46bd38 !important;border:0px !important;}
+.carousel-indicators li{ background-color:#3d3d3d !important; border:0px !important;}
+.betonplayerTitle{ width:100%; font-size:34px; color:#fff; text-align:center; font-family:Helvetica-Light; padding:50px 0;}
+.betonplayes{ background-color:#000;}
+.playerflag{ width:100%; float:left; list-style:none; margin:0;}
+.playerflag li{ width:50%; float:left; padding:10px;} 
+.playerflag li img{ width:50px; height:50px; border-radius:25px; float:left; margin-right:10px;background-size:100% 100%;}
+.playerflag li span{ line-height:50px; color:#fff; text-align:left;}
+.fantalkbold{ font-size:32px; float:left; margin-top:20px; width:100%;}
+.fanparagraph{ font-size:20px; color:#333;float:left; margin-top:20px; width:100%;}
+.fantalkbox{ width:100%; float:left; padding:50px 80px 0 80px;}
+
+.homebannerbox{ background-image:url(../images/homebanner.png);  min-height:600px; padding-bottom:40px;background-size:100% 100%;}
+.homebannerappstorebtnbox{ width:320px; margin:0 auto; margin-top:40px; margin-bottom:30px;}
+.homebannerappstorebtnbox a:last-child{ margin-left:5px;}
+.playbutton {
+    cursor: pointer;
+}
+.homepagebodybg{ background-image:url(../images/homebg.png); background-repeat:repeat;}
+.fanplayer{ margin-left:100px;}
+.fanname{ font-size:20px; font-family:Helvetica_bold; margin-top:20px; float:left;}
+.logingformarrow{ position:absolute; top:-10px; left:50%;}
+.createcontetsslidebox{ background:#000;}
+.createcontetsslidebox .carousel-indicators{ bottom:0px !important;}
+.createcontestslider_img .item{ width:100%; margin-left:0%; padding-bottom:30px;}
+
+.createcontestmdbg{ background:url(../images/createconstbg.png); width:100%; min-height:500px;}
+.pickthegamebold{ color:#fff; width:100%; float:left; text-align:center; margin-top:50px;font-family:Helvetica_bold; font-size:40px;}
+.boldblacktxt{ color:#000; font-size:22px;font-family:Helvetica_bold; width:100%; float:left; text-align:center;}
+
+.contestsliderbox1{ width:38%;float:left; margin:45px 5% 45px 7%;}
+
+.contestsliderbox2{ width:38%;float:left; margin:45px 7% 45px 5%;}
+.pickbox{ width:100%; padding:25px; float:left; box-sizing:border-box; border:1px solid #46bd38;}
+.contextslider .active{border:3px solid #46bd38;}
+.picktext{ color:#fff; font-size:25px; float:left; line-height:44px; margin-right:15px;}
+.pickno{font-family:Helvetica_bold; float:right; line-height:44px;font-size:25px;color:#fff; }
+.tshurtimg{ width:44px; height:44px; float:left; margin:0 5px;}
+.tshurtimg img{ width:100%; float:left;background-size:100% 100%;}
+.nomatch{ color:#fff;font-family:Helvetica_bold; font-size:20px; line-height:44px; margin-left:10px; }
+
+.flagsliderbox{ width:100px; float:left; margin:35px 10px; cursor:pointer; }
+.flagsliderbox img{ width:80px; float:left; height:80px; margin:10px; background-size:100% 100%; border-radius:40px;} 
+.flagsliderbox span{ width:100%; float:left; text-align:center; color:#fff; font-size:14px;  } 
+.flagcontntslider{ width:90%; margin-left:5%;}
+.flagsliderbox .active{ border:4px solid #46bd38;}
+.flagsliderbox img:hover{ border:4px solid #46bd38;}
+
+.checkboxslidermain{ padding:35px 0;}
+.contesttab li a{border-bottom:1px solid #1a1a1a !important; color:#fff;font-family:Helvetica_bold;}
+.contesttab .active a{ background:#000 !important; border:1px solid #1a1a1a !important; border-bottom:0px !important; color:#51ca44 !important;}
+.contesttab li a:hover{background:#000 !important; border:none !important;}
+.backall1{float: left;margin-top: 7px;padding-left: 10px;padding-right: 8px;border-bottom: 1px solid #1a1a1a;padding-bottom: 3px;}
+.entryfeecheck{ list-style:none; width:70%; margin-left:15%; float:left; padding:0px;}
+.entryfeecheck li{ width:10%; float:left; display:inline;}
+.entryfeecheck li label{ width:100%; float:left;}
+.entryfeecheck .checkboxtxt{ width:40% !important; line-height:38px;}
+.arwdwn{ padding:7px; font-size:12px;}
+
+.Topentryfeecheck{ list-style:none; width:400px; margin:0px auto; padding:0px;}
+.Topentryfeecheck li{ width:25%; float:left; display:inline;}
+.Topentryfeecheck li label{ width:100%; float:left;}
+.Topentryfeecheck .checkboxtxt{ width:60% !important; line-height:38px;}
+
+.Toptenprice{ width:500px; margin: 15px auto; padding:10px 0;}
+.Toptenprice ul{ list-style:none; width:100%; float:left; padding-top:10px; margin-bottom:30px; border: 1px solid #1a1a1a;}
+.Toptenprice li{ width:25%; float:left; display:inline; color:#46bd38; padding:8px 0;}
+.Toptenprice li span{ margin-right:5px; float:left; display:inline; color:#fff;}
+.eurotop{color:#46bd38 !important; font-size:10px; margin-top:3px;}
+.europrice{color:#46bd38 !important;margin-right:0px !important;}
+
+
+.tabs_style
+{
+	background-color:transparent;
+	color:#FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:16px;
+	text-decoration:none;
+	padding-bottom:5px;
+	outline:none !important;
+}
+
+
+.tabs_style:hover,  .tabs_style:active, .tabs_style:focus, .tabs_style:visited
+{
+	color:#FFF;
+	border-bottom:2px solid #FFF;
+	padding-bottom:2px;
+	outline:none !important;
+	text-decoration:none;
+}
+
+.tabs-table td {width:20%; text-align:center; border-color:#333 !important;}
+.table-bordered{border-color:#333 !important;}
+
+
+
+/* containt */
+
+.match_team_text{ color:#FFF; font-size:16px; float:left; margin-bottom:0px; margin-top:10px; width:100%;}
+.match_day_text{ color:#FFF; font-size:14px; float:left; width:100%;}
+
+.team_info_text{ color:#FFF; font-size:16px; width:40%; font-weight:bold;}
+.countdown_text{ color:#F00; font-size:18px; margin:25px 0px 40px 0px; font-weight:bold;}
+
+.team_info_text1{color:#FFF; font-size:14px; font-weight:bold; margin-bottom:0px;}
+.team_name{color:#FFF; font-size:18px; font-weight:bold;}
+.prize_text{color:#FFF; font-size:14px; font-weight:bold; margin-bottom:0px;}
+.rank_text{color:#FFF; font-size:16px; font-weight:bold; margin-bottom:20px; }
+.rank_text1{color:#0C0; font-size:16px; font-weight:bold; }
+.rank_table{ margin-top:30px;}
+.entrants_text{color:#FFF; font-size:16px; font-weight:bold; margin-bottom:20px; }
+.entrantsNo_text{color:#0C0; font-size:16px; font-weight:bold; margin-right:10px;}
+.rules_text{color:#FFF; font-size:16px; font-weight:bold; border-bottom:1px solid #333; padding-bottom:4px; margin-bottom:5px; margin-left:25px; }
+.rules_point_text{ float:right; color:#0C0; font-size:16px; font-weight:bold;}
+.rules_point_text1{ float:right; color:#F00; font-size:16px; font-weight:bold;}
+.view_rules_text{color:#FFF; font-size:16px; font-weight:bold; text-decoration:none; }
+.view_rules_text:active, .view_rules_text:hover, .view_rules_text:focus{color:#FFF; text-decoration:none; }
+.view_rules_text1{color:#0C0; font-size:16px; font-weight:bold;}
+.view_rules_margin{margin-top:30px; margin-bottom:20px;}
+#Entrants{ margin-top:50px; width:100%; float:left;}
+#Matches{ margin-top:30px; width:100%; float:left; padding:0 20px;}
+#Rules{ margin-top:30px; width:100%; float:left;}
+#Prizes{ margin-top:25px; width:100%; float:left;}
+.infocntestbox{ background:#000; padding-top:20px; padding-bottom:30px;}
+
+.tshurtliderbox{ width:100px; float:left; margin:35px 10px; cursor:pointer; }
+.tshurtliderbox img{ width:80px; float:left; height:80px; margin:10px; background-size:100% 100%; } 
+.tshurtliderbox span{ width:100%; float:left; text-align:center; color:#fff; font-size:14px;  } 
+.flagcontntslider{ width:90%; margin-left:5%;}
+.redcolor{ color:#fa0e03 !important;}
+.bluecolor{color:#223756 !important;}
+
+.tshurtbox{ position:relative;width: 100%;float: left;}
+.tshname{ color:#46bd38;font-family:Helvetica_bold; position:absolute; bottom:10px; right:20px; font-size:18px;}
+.infocreatebox{float: right;margin-top: 65px;margin-left: 20px;}
+.infocreatebox1{float: left;margin-top:80px;margin-left: 30px; color:#fff; text-decoration:none;}
+.euroslider{float: left;margin-top:75px;margin-left: 20px; font-size:22px;color:#46bd38; text-decoration:none;}
+.infocreatebox1 span{ margin-left:5px;}
+.infocreatebox1:hover{ color:#fff; text-decoration:none;}
+.infocreatebox1:focus{ color:#fff; text-decoration:none;}
+.leftarrow2 { float: left; margin-top: 5px; margin-right: 20px;}
+.chanllengepoupmain{ width:450px !important;  }
+.chanllengepoup{ background:#000 !important;border-radius:0px !important; }
+.chanllengepoup .modal-header{ border-bottom:0px !important;}
+.chanllengepoup .modal-footer{ border-top:0px !important;}
+.chanlgeclosepop{ color:#fff !important;}
+.chanllengepoup .modal-title{ color:#fff; text-align:center;font-family:Helvetica_bold;margin-top:15px;}
+.changedetl{ color:#fff; padding:0px 50px;}
+.changefendheadborder{ width:15%; margin-left:42.5%; float:left; margin-top:15px;  height:2px; background:#46bd38;}
+.chlgserchdropmain{ width:230px; margin:0 auto;}
+.chlgserchdrop{ width:100%; float:left; border:1px solid #46bd38; position:relative;}
+.serchdroptitle{ color:#fff; text-align:center; width:100%; cursor:pointer;  font-size:14px; float:left; margin-top:8px;}
+.serchicon{ color:#46bd38; margin-left:10px; font-size:18px; }
+.chngfrnpopsocial{ width:80%; float:left; margin-left:10%; margin-top:25px;}
+.chngfrnpopsocial a { width:20%; margin:0 2.5%; float:left; color:#46bd38; }
+.chngfrnpopsocial a:hover { text-decoration:none;} 
+.chngfrnpopsocial a img{ width:78%; margin-left:11%; float:left; background-size:100% 100%;}
+.chngfrnpopsocial a  span{ color:#46bd38; width:100%; float:left; text-align:center; font-size:14px;}
+.serchfilterslide{ width:100%; float:left; max-height:250px; overflow:auto; }
+.serchfilterslidemain{position:absolute; left:0; top:40px; width:100%; background:#000;border:1px solid #46bd38; border-top:0px;}
+.checkfltertxt{ float:left; color:#fff; margin-top:12px;}
+.allcheckfrndfltr{ text-align:center;}
+.checkfrndfltr .checkboxcheck{ float:right;}
+.checkfrndfltr label{ width:100%; padding:2px 15px !important; box-sizing:border-box;}
+.checkfltertxt .subdtl{ font-size:10px; opacity:0.8; float:left; clear:left;}
+.checkfltertxt .maindtl{ float:left; font-size:14px;}
+.checkfrndfltr .checkboxcheck{ margin-top:17px;}
+.donefltrbtn{ border:none; width:100px; margin-left:67px; margin-bottom:15px; }
+
+
+.panel-default{ float:left; width:100%;}
+.panel-group .panel{ border-radius:0px; border:none !important; box-shadow:none; border-top:1px solid #ddd !important;}
+.panel-body{ padding:15px 0px 15px 0px; border-top:1px solid #ddd; background-color:#f2f2f2 !important; }
+.panel-heading{ background-color:#FFF; padding:0px;}
+
+.team_tshart{ width:50px; height:60px; margin:10px 10px 10px 0px;}
+.players_name_text{color:#000 !important; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; text-decoration:none;}
+.players_name_text:hover, .players_name_text:focus, .players_name_text:active {color:#000; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; text-decoration:none;}
+.players_name_text_white{color:#fff !important; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; text-decoration:none;}
+.match_team_txt{color:#000; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; float:left; margin-bottom:0px; margin-top:23px; width:100%;}
+.match_day_txt{color:#000; font-family:Arial, Helvetica, sans-serif; font-size:14px; float:left; margin-bottom:0px; margin-top:3px; width:100%;}
+
+.price_txt{float:right; text-align:left; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; margin-top:23px; }
+.price_txt1{color:#000; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; }
+
+.player_details_text{color:#000; font-family:Arial, Helvetica, sans-serif; font-size:16px;  border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:5px; float:left; width:100%;}
+.player_details_text1{ float:right; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:16px; }
+.flag_icon{ width:25px; height:20px; margin-right:5px;}
+.lock_img_size{ width:35px; height:35px; margin-top:-5px; margin-left:20px;}
+.teammate_txt{color:#000; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold;}
+
+.filter_input_style{ border-radius:0px; border-color:#666; font-family:Arial; font-size:14px; color:#000;}
+.filter_input{padding-left:10px !important;}
+.filter_lable{font-family:Arial; font-size:16px; color:#000; padding:5px 0px 0px 40px;}
+.team-name-txt{font-family:Arial; font-size:16px; color:#000; font-weight:bold; margin-bottom:0px;}
+.team-prize-txt{font-family:Arial; font-size:16px; color:#000; font-weight: normal;}
+.team-logo{ width:32px; height:32px;}
+.heading_groups{ margin-top:20px !important; width:100%; float:left;}
+
+.players_heading{font-family:Arial; font-size:16px; color:#000; font-weight:bold; padding-left:30px;}
+.matches_heading{font-family:Arial; font-size:16px; color:#000; font-weight:bold; padding-left:20px;}
+.prize_heading{font-family:Arial; font-size:16px; color:#000; font-weight:bold; float:right; text-align:right;}
+
+.contesttblbox{ padding:20px;}
+
+.addpopupchbox {  width: 50px;  float: right;  margin-top: -35px; margin-right: 10px;}
+.addpopupchbox span{ color:#fff;}
+.addpopupchbox:hover{ text-decoration:none;}
+
+.friendtab{ width:100%; float:left; padding:0 30px;}
+.friendtab .nav-tabs{ border-bottom:0px;}
+.friendtab li{ width:48%; float:left; border:1px solid #1a1a1a; text-align:center; color:#fff; padding:7px; }
+.friendtab li:last-child{ margin-left:4%;}
+.friendtab li a{color:#fff;display: inline; padding:0px 5px; border:0px;}
+.friendtab li a:hover{ background-color:transparent !important;}
+.friendtab .active a{ background-color:transparent !important;border:0px !important; border-bottom:2px solid #1a1a1a !important; color:#fff !important; }
+.chlgserchdrop1 { width: 100%; float: left; margin-top:20px;}
+
+.donefltrbtn2 { border: none; width: 170px; margin-left: 30px; margin-bottom: 15px;}
+.searchforchpopup{ width:90%; margin-left:5%; float:left; margin-top:10px; padding:5px; height:34px; background:#000; border-radius:22px; border:1px solid #46bd38;}
+.infocreatebox2 { float: right; margin-top: 80px; margin-right: 30px; cursor:pointer; color: #fff; text-decoration: none;}
+.infocreatebox2:hover{ text-decoration:none !important; color:#fff !important;} 
+.infocreatebox2:focus{ text-decoration:none !important; color:#fff !important;} 
+.importdrop {background-color: #000 !important; right: 0; width: 350px; left: auto; margin-top: 65px; padding:10px;}
+.importlinupdrop{ float:right;}
+.arwdrp{ margin-left:5px; margin-top:5px; font-size:12px;}
+.importpopuparw{ float:right; margin-right:49%; margin-top:0px; line-height:12px; font-size:20px; color:#2d2d2d;}
+.importlibox{width:33.33%; float:left; background:#2d2d2d; color:#fff; line-height:41px; font-size:12px;}
+.importlibox img{ width:40px; float:left; padding:5px;}
+.importdrop li a{ padding:0 !important; float:left; width:100%; box-sizing:border-box; border-bottom:1px solid #000;}
+.importdrop li a:hover{ border:1px solid #46bd38;} 
+#Friends{ position:relative;}
+#Requests{ position:relative;}
+
+@media screen and (min-width:1201px) and (max-width:1270px)
+{
+.leftarrow{ float:left; margin-top:10px; margin-left:5px; width:15px;background-size:100% 100%;}
+.hometab li a{ color:#000; padding:13px 5px !important; line-height:44px;}
+}
+@media screen and (min-width:991px) and (max-width:1200px)
+{
+.navbar-header{ width:140px;}
+.logo{padding:15px 5px !important; }
+.logo img{ width:100%;}
+.header_menu li a{padding: 0 15px !important; font-size:14px;min-width:100px;}
+.depostfndbtn{ margin-right:5px; margin-left:10px;}
+.createcontstbtn{ font-size:12px;}
+.leftarrow{ float:left; margin-top:10px; margin-left:0px; width:15px;background-size:100% 100%;}
+.hometab li a{ color:#000; padding:13px 5px !important; line-height:44px; white-space:normal;}
+
+.playerflag li{ padding:8px;}
+.playerflag li img{ width:40px; height:40px; border-radius:20px;}
+.playerflag li span{ line-height:35px; }
+
+.homebannerbox{  min-height:450px; padding-bottom:40px;}
+.homebannerappstorebtnbox{  margin-top:300px;}
+.fanplayer{ margin-left:30px;}
+
+.contestsliderbox1{ width:44%;float:left; margin:45px 2% 45px 4%;}
+.contestsliderbox2{ width:44%;float:left; margin:45px 4% 45px 2%;}
+.infocreatebox{float: left;}
+}
+
+@media screen and (min-width:820px) and (max-width:900px)
+{
+.myacounthometab li a{ font-size:12px;}
+
+}
+@media screen and (min-width:768px) and (max-width:821px)
+{
+.myacounthometab li a{ font-size:10px;}
+}
+@media screen and (min-width:320px)  and (max-width:820px)
+{
+.team_group_width{ width:100%; margin-bottom:15px;}
+.team_group_width1{ width:100%;}
+.filter_lable{padding:5px 0px 0px 0px;}
+
+}
+@media screen and (min-width:768px) and (max-width:992px)
+{
+ .greenbtnbg{ padding:5px 5px; font-size:12px; }
+.navbar-header{ width:120px;}
+.logo{padding:15px 5px !important; }
+.logo img{ width:100%;}
+.header_menu li a{padding: 0 10px !important; font-size:12px;min-width:50px;}
+.username{ padding:18px 10px 10px 0px !important; font-size:12px;}
+.greenbtn{ font-size:12px;padding:10px 8px}
+.username img{ width:24px; height:24px; background-size:100% 100%; }
+.refer{max-width:110px;}
+.leftarrow{ float:left; margin-top:12px; margin-left:0px; width:12px;background-size:100% 100%;}
+.hometab li a{ color:#000; padding:13px 5px !important; }
+.footer_container{ width:100%}
+.depostfndbtn{ margin-right:0px; margin-left:0px;}
+.createcontstbtn{ font-size:10px;}
+
+
+.playerflag li{ padding:5px;}
+.playerflag li img{ width:35px; height:35px; border-radius:17px;}
+.playerflag li span{ line-height:35px; }
+.fantalkbold {    font-size: 30px;}
+.fantalkbox {  width: 100%;  float:left; padding: 20px 30px 0 30px;}
+.fanparagraph {    font-size: 16px; margin-top:0px;}
+.fanplayer{ margin-left:30px;}
+
+.homebannerbox{  min-height:400px; padding-bottom:40px;}
+.homebannerappstorebtnbox{  margin-top:250px;}
+.contestsliderbox2{ width:90%; margin:0px 5% 45px 5%;}
+.contestsliderbox1{ width:90%; margin:45px 5% 45px 5%;}
+.team_info_text{width:60%;}		
+.infocreatebox{float: left;}
+	
+}
+
+@media screen and (min-width:641px)  and (max-width:767px)
+{
+ #myNavbar{ background-color:#202020; z-index:9; position:relative;}
+ .header_menu li{ border-left:0px solid #000; padding:5px 0; }
+.header_menu li a{ line-height:34px; font-size:14px; color:#fff !important; text-align:center;  padding-top:0px !important; padding-bottom:0px !important; } 
+.header_menu li.active a{border-left:0px solid #51ca44;border-right:0px solid #51ca44;margin:0;  }
+.refer{max-width:100%; text-align:center; line-height:34px !important;}
+.greenbtn{ width:90%; margin-left:5%; text-align:center;} 
+.hometab li a{ color:#000; padding:3px 10px !important; line-height:44px;}
+.username{ text-align:center; box-sizing:content-box;}
+.username img{float:none;}
+.greentxt{ color:#51ca44; font-family:Helvetica_bold; text-align:center; width:100%;  margin-left:0px;margin-top:-7px; float:left; }
+.footer_container{ width:100%}
+.usernametxt{ float:none; margin:0 10px;}
+.header .container-fluid{background:none;}
+
+.homebannerbox{  min-height:350px; padding-bottom:40px;}
+.homebannerappstorebtnbox{  margin-top:220px;}
+.contestsliderbox2{ width:90%; margin:0px 5% 45px 5%;}
+.contestsliderbox1{ width:90%; margin:45px 5% 45px 5%;}
+.team_info_text{width:70%;}	
+.infocreatebox{float: left;}
+}
+@media screen and (min-width:481px)  and (max-width:640px)
+{
+	 #myNavbar{ background-color:#202020; z-index:9; position:relative;}
+ .header_menu li{ border-left:0px solid #000; padding:5px 0; }
+.header_menu li a{ line-height:34px; font-size:14px; color:#fff !important; text-align:center;  padding-top:0px !important; padding-bottom:0px !important; } 
+.header_menu li.active a{border-left:0px solid #51ca44;border-right:0px solid #51ca44;margin:0;  }
+.refer{max-width:100%; text-align:center; line-height:34px !important;}
+.greenbtn{ width:90%; margin-left:5%; text-align:center;} 
+.hometab li a{ color:#000; padding:3px 10px !important; line-height:44px;}
+.username{ text-align:center;}
+.greentxt{ color:#51ca44; font-family:Helvetica_bold; text-align:center;  margin-left:0px;width:100%; margin-top:-7px; float:left; }
+.footer_container{ width:100%}
+.usernametxt{ float:none; margin:0 10px;}
+.username img{float:none;}
+.header .container-fluid{background:none;}
+.loginbtn{ margin:0 auto; line-height:12px !important;}
+.logindrop{ min-height:220px }
+.forgotpswd{  margin-top:12px;}
+.sliderarrow img{ width:30px; background-size:100% 100%; margin-top:-30px;}
+.fanplayer{ margin-left:20px;}
+.fantalkbox {  width: 100%;  float:left; padding: 30px 50px 0 50px;}
+
+.homebannerbox{  min-height:350px; padding-bottom:40px;}
+.homebannerappstorebtnbox{  margin-top:220px;}
+.contestsliderbox2{ width:94%; margin:0px 3% 45px 3%;}
+.contestsliderbox1{ width:94%; margin:45px 3% 45px 3%;}
+.pickbox{ width:100%; padding:22px;}
+.matchTxt-width{ width:100% !important;}
+.Toptenprice{ width:100%;}
+.Topentryfeecheck{ width:100%; }
+.entryfeecheck{ list-style:none; width:90%; margin-left:5%; }
+.tabs_style{ font-size:14px;}
+.match_width{ width:100%;}
+.team_info_text{width:80%;}
+
+.rules_text_width{ width:100%;}
+.rules_text{ margin-left:20%; margin-right:20%; }
+.infocreatebox{float: left;}
+}
+@media screen and (min-width:320px)  and (max-width:480px)
+{
+	 #myNavbar{ background-color:#202020; z-index:9; position:relative;}
+ .header_menu li{ border-left:0px solid #000; padding:5px 0; }
+.header_menu li a{ line-height:34px; font-size:14px; color:#fff !important; text-align:center;  padding-top:0px !important; padding-bottom:0px !important; } 
+.header_menu li.active a{border-left:0px solid #51ca44;border-right:0px solid #51ca44;margin:0;  }
+.refer{max-width:100%; text-align:center; line-height:34px !important;}
+.greenbtn{ width:90%; margin-left:5%; text-align:center;} 
+.hometab li a{ color:#000; padding:3px 10px !important; line-height:44px;}
+.username{ text-align:center;}
+.greentxt{ color:#51ca44; font-family:Helvetica_bold; text-align:center;  margin-left:0px; width:100%; margin-top:-7px; float:left; }
+.footer_container{ width:100%}
+.usernametxt{ float:none; margin:0 10px;}
+.username img{float:none;}
+.header .container-fluid{background:none;}
+.challenge_sociallink ul{ width:100%; float:left; margin:0; padding:0;}
+.challenge_sociallink ul li{ width:25%;}
+.challenge_sociallink li .csicon{width:50%;margin-left:25%; float:left;}
+.playerflag{padding:0px;}
+.playerflag li{ width:50%;}
+.playerflag li img{ width:30px; height:30px; border-radius:15px;}
+.playerflag li span{ line-height:30px; }
+.howtoplayTitle{ font-size:26px; }
+.betonplayerTitle{font-size:24px; padding:20px 0;}
+.sliderarrow img{ width:25px; background-size:100% 100%; margin-top:-25px;}
+.fanplayer{ margin-left:10px;}
+.fantalkbox {  width: 100%;  float:left; padding: 30px 20px 0 20px;}
+
+.homebannerbox{  min-height:270px; padding-bottom:10px;}
+.homebannerappstorebtnbox{  margin-top:190px; margin-bottom:15px;}
+
+.contestsliderbox2{ width:96%; margin:0px 2% 45px 2%;}
+.contestsliderbox1{ width:96%; margin:45px 2% 45px 2%;}
+.pickbox{ width:100%; padding:15px;}
+.matchTxt-width{ width:100% !important;}
+.Toptenprice{ width:100%;}
+.Topentryfeecheck{ width:100%; }
+.entryfeecheck{ list-style:none; width:90%; margin-left:5%; }
+
+.tabs_style{ font-size:14px;}
+.match_width{ width:100%;}
+.team_info_text{width:100%;}
+.rank_width{ float:left; margin-left:0px !important; width:100%;}
+.entrants_text_width{width:100%;}
+.rules_text_width{ width:100%;}
+.rules_text{margin-left:3%; margin-right:3%;}
+.infocreatebox{float: left;}
+.filter_input{ width:100%; float:left; margin-top:5px;}
+.filter_input{padding-left:8px !important;}
+}
+
+.playerstats {
+    background-color: #000;
+    border: 1px solid #333;
+    padding: 0px;
+}
+
+.playerstats > table > thead {
+    color: #00CC00;
+    font-weight: bold;
+}
+
+.playerstats > table > thead > tr > th {
+    border: 0.5px solid #333;
+    border-color: #333;
+    border-style: solid;
+    border-width: 2px 0.5px 0.5px 0.5px;
+}
+
+.full-size {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+}
+
+.loginbox {
+    position: relative;
+    top: 100px;
+    height: 350px;
+    width: 600px;
+    margin: auto;
+    background: url('../images/popupbackground.png');
+    background-position: bottom right;
+}

@@ -1,0 +1,40 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Friend requests</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row modal-section">
+                    <div class="col-md-10 col-md-offset-1" ng-if="requests.length > 0">
+                        <div class="modalplayersection">
+                            <div class="row playerlist" ng-repeat="request in requests">
+                                <div class="col-md-4">
+                                    <span class="players_name_text_white">{{request.user.name}}</span>
+                                    <br>
+                                    <small>{{request.user.username}}</small>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-2 pull-right">
+                                    <button class="greenbtntbl" ng-click="acceptFriendRequest(request.id)">Accept</button>
+                                </div>
+                                <div class="col-md-2 pull-right">
+                                    <button class="whitebtntbl" ng-click="removeFriend(request.user.id, true)">Ignore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center" ng-if="requests.length < 1">
+                        <h5 class="players_name_text_white">No pending friend requests.</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

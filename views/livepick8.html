@@ -1,0 +1,251 @@
+<section id="livepick8" class="padding-horizontal">
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="players_name_text_white">1<sup>st</sup></h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="players_name_text_white">You</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-white"><b>34.65</b></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <img src="images/mls.png">
+                <h5 class="players_name_text_white"> 1 / 6 </h5>
+            </div>
+        </div>
+</section>
+<section>
+    <div class="row livestrip padding-horizontal">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-1">
+            <span class="glyphicon glyphicon-time text-white" style="font-size: 30px;"></span>
+        </div>
+        <div class="col-md-3">
+            <span class="text-white" style="font-size: 20px;"><b>140</b></span>
+        </div>
+        <div class="col-md-4">
+            <span class="text-white" style="font-size: 20px;"><b>Minutes Remaining</b></span>
+        </div>
+    </div>
+</section>
+<section class="livesection">
+    <div class="container">
+        <div class="row text-center modal-section">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                <ul class="nav nav-pills contestinfo nav-justified" style="width: 100%;">
+                    <li ng-class="{active: infotab == 'matchup'}"><a ng-click="infotab = 'matchup'">Match-up</a></li>
+                    <li ng-class="{active: infotab == 'matches'}"><a ng-click="infotab = 'matches'">Matches</a></li>
+                    <li ng-class="{active: infotab == 'prices'}"><a ng-click="infotab = 'prices'">Prizes</a></li>
+                    <li ng-class="{active: infotab == 'entrants'}"><a ng-click="infotab = 'entrants'">Entrants</a></li>
+                    <li ng-class="{active: infotab == 'rules'}"><a ng-click="infotab = 'rules'">Rules</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="livesection">
+    <div class="container">
+        <div class="tab-content">
+            <div ng-class="{active: infotab == 'matchup'}" class="tab-pane fade in">
+                <div class="row modal-section">
+                    <div class="col-md-7">
+                        <div class="row playerlist">
+                            <div class="col-md-2" >
+                                <img src="images/infotshurt.png" class="img-responsive">
+                            </div>
+                            <div class="col-md-3" >
+                                <h3 class="players_name_text_white">Mesut Ozil</h3>
+                                <p class="text-white">
+                                    Atletico Madrid vs FC Barcelona
+                                </p>
+                            </div>
+                            <div class="col-md-4" ng-click="playerinfo(player.player.id)">
+                                <h3 class="text-white">13.40</h3>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <img src="images/dmsym.png">
+                            </div>
+                        </div>
+                        <div class="row playerlist">
+                            <div class="col-md-2" >
+                                <img src="images/infotshurt.png" class="img-responsive">
+                            </div>
+                            <div class="col-md-3" >
+                                <h3 class="players_name_text_white">Mesut Ozil</h3>
+                                <p>
+                                    {{player.match.team1 + ' vs ' + player.match.team2}}
+                                </p>
+                            </div>
+                            <div class="col-md-4" ng-click="playerinfo(player.player.id)">
+                                <h3 class="text-white">13.40</h3>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <img src="images/dmsym.png">
+                            </div>
+                        </div>
+                        <div class="row playerlist">
+                            <div class="col-md-2" >
+                                <img src="images/infotshurt.png" class="img-responsive">
+                            </div>
+                            <div class="col-md-3" >
+                                <h3 class="players_name_text_white">Mesut Ozil</h3>
+                                <p>
+                                    {{player.match.team1 + ' vs ' + player.match.team2}}
+                                </p>
+                            </div>
+                            <div class="col-md-4" ng-click="playerinfo(player.player.id)">
+                                <h3 class="text-white">13.40</h3>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <img src="images/omsym.png">
+                            </div>
+                        </div>
+                        <div class="row playerlist">
+                            <div class="col-md-2" >
+                                <img src="images/infotshurt.png" class="img-responsive">
+                            </div>
+                            <div class="col-md-3" >
+                                <h3 class="players_name_text_white">Mesut Ozil</h3>
+                                <p>
+                                    {{player.match.team1 + ' vs ' + player.match.team2}}
+                                </p>
+                            </div>
+                            <div class="col-md-4" ng-click="playerinfo(player.player.id)">
+                                <h3 class="text-white">13.40</h3>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <img src="images/defendersym.png">
+                            </div>
+                        </div>
+                        <div class="row playerlist">
+                            <div class="col-md-2" >
+                                <img src="images/infotshurt.png" class="img-responsive">
+                            </div>
+                            <div class="col-md-3" >
+                                <h3 class="players_name_text_white">Mesut Ozil</h3>
+                                <p>
+                                    {{player.match.team1 + ' vs ' + player.match.team2}}
+                                </p>
+                            </div>
+                            <div class="col-md-4" ng-click="playerinfo(player.player.id)">
+                                <h3 class="text-white">13.40</h3>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <img src="images/strikersym.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row playerlist">
+                            <div class="col-md-3" >
+                                <h3 class="text-white">1<sup>st</sup></h3>
+                            </div>
+                            <div class="col-md-6" >
+                                <h3 class="players_name_text_white">Hardik Patel</h3>
+                                <h3 class="text-white">18.60</h3>
+                            </div>
+                        </div>
+                        <div class="row playerlist">
+                            <div class="col-md-3" >
+                                <h3 class="text-white">2<sup>nd</sup></h3>
+                            </div>
+                            <div class="col-md-6" >
+                                <h3 class="players_name_text_white">Hardik Patel</h3>
+                                <h3 class="text-white">18.60</h3>
+                            </div>
+                        </div>
+                        <div class="row playerlist">
+                            <div class="col-md-3" >
+                                <h3 class="text-white">3<sup>rd</sup></h3>
+                            </div>
+                            <div class="col-md-6" >
+                                <h3 class="players_name_text_white">Hardik Patel</h3>
+                                <h3 class="text-white">18.60</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<div class="container-fluid footer">
+    <div class="footer_container">
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">About</h4>
+            <ul class="footerlink">
+                <li><a  href="#">About Draftbuddies</a></li>
+                <li><a  href="#">Contact us</a></li>
+                <li><a  href="#">How to play</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Help</h4>
+            <ul class="footerlink">
+                <li><a  href="#">Terms of use</a></li>
+                <li><a  href="#">Privacy policy</a></li>
+                <li><a  href="#">Responsible gaming</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Social Media</h4>
+            <ul class="footerlink">
+                <li><a  href="#"><img src="images/fb.png" class="footerlinkicon" />Facebook</a></li>
+                <li><a  href="#"><img src="images/tw.png" class="footerlinkicon" />Twitter</a></li>
+                <li><a  href="#"><img src="images/insta.png" class="footerlinkicon" />Instagram</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Available on</h4>
+            <ul class="footerlink">
+                <li><img src="images/playstore.png" class="appstore"  /> </li>
+                <li><img src="images/apple.png"  class="appstore"/> </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!--<script>-->
+    <!--$(function () {-->
+    <!--$('[data-toggle="tooltip"]').tooltip();-->
+    <!--$(".owl-carousel").owlCarousel({-->
+    <!--items : 6,-->
+    <!--});-->
+    <!--})-->
+    <!--</script>-->
+
+
+</div>
+<div class="footerlastimg"><img src="images/footerlast.png" class="img-responsive"> </div>

@@ -1,0 +1,176 @@
+<div class="container-fluid">
+    <div class="row">
+        <ul class="nav nav-tabs nav-justified hometab">
+            <li ng-click="clearFilters()"><a data-toggle="tab" ng-click="tabtoshow = 'all'" ng-class="{active: tabtoshow == 'all'}">All</a></li>
+            <li><a data-toggle="tab" ng-click="tabtoshow = 'fee'" ng-class="{active: tabtoshow == 'fee'}">Entry fees</a></li>
+            <li><a data-toggle="tab" ng-click="tabtoshow = 'entrants'" ng-class="{active: tabtoshow == 'entrants'}">Entrants</a></li>
+            <li><a data-toggle="tab" ng-click="tabtoshow = 'competitions'" ng-class="{active: tabtoshow == 'competitions'}">Leagues</a></li>
+            <li><a data-toggle="tab" ng-click="tabtoshow = 'type'" ng-class="{active: tabtoshow == 'type'}">Pick type</a></li>
+            <!--<li class="text-center"><button class="btn btn-danger" ng-click="clearFilters()">Clear Filters</button></a></li>-->
+            <li><a data-toggle="tab" > <button class="greenbtnbg createcontstbtn" ui-sref="admin.createcontest"> Create a contest</button></a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="menu3" ng-class="{active: tabtoshow == 'fee'}" class="tab-pane fade in">
+                <div class="row container">
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <label>Minimum</label>
+                            <input class="form-control" ng-model="filter.fee.min" type="number" min="1">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <label>Maximum</label>
+                            <input class="form-control" ng-model="filter.fee.max" type="number" min="10">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" style="margin-top: 30px;" ng-click="filter.fee.min=1; filter.fee.max=100000;">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div id="menu4" ng-class="{active: tabtoshow == 'entrants'}" class="tab-pane fade in">
+                <div class="row container">
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <label>Minimum</label>
+                            <input class="form-control" type="number" ng-model="filter.entrants.min" min="1">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <label>Maximum</label>
+                            <input class="form-control" type="number" ng-model="filter.entrants.max" min="2">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" style="margin-top: 30px;" ng-click="filter.entrants.min=1; filter.entrants.max=100000;">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div id="menu6" ng-class="{active: tabtoshow == 'type'}" class="tab-pane fade in">
+                <div class="row container" style="padding-top: 20px; padding-left: 10px;">
+                    <div class="col-md-2">
+                        <label>
+                            <input type="radio" class="replace" ng-model="filter.type" value="pick_8">
+                            <div></div> Pick 8
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>
+                            <input type="radio" class="replace" ng-model="filter.type" value="pick_2">
+                            <div></div> Pick 2
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" ng-click="filter.type = undefined;">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div id="menu5" ng-class="{active: tabtoshow == 'competitions'}" class="tab-pane fade in">
+                <div class="row leagueFilterRow">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-10">
+                        <ul rn-carousel rn-carousel-controls style="height: 120px;" class="image">
+                            <li ng-repeat="league in leagues">
+                                <label class="layer">
+                                    <input class="custom" type="radio" ng-model="filter.competition" name="league" ng-change="getMatches()" value="{{league.id}}">
+                                    <div class="text-center leaguebox">
+                                        <img src="images/{{league.code}}.png" alt="Premier League" title="Premier League">
+                                        <br>
+                                        <div style="width: 100%" ng-bind="league.name"></div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="home" class="col-md-12">
+            <div class="tablebox">
+                <table class="table table-striped tabtable">
+                    <thead>
+                    <tr>
+                        <th class="first_th">GAME TYPE<span class="caret"></span></th>
+                        <th>DURATION<span class="caret"></span></th>
+                        <th>ENTRY FEE<span class="caret"></span></th>
+                        <th>PRIZE<span class="caret"></span></th>
+                        <th>ENTRANTS<span class="caret"></span></th>
+                        <th>STARTS IN<span class="caret"></span></th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody class="blod_font">
+                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type}" ng-if="(contest.entry_fee <= filter.fee.max && contest.entry_fee >= filter.fee.min) && (contest.entrants <= filter.entrants.max && contest.entrants >= filter.entrants.min)">
+                        <td ng-click="getContestInfo(contest.id)"><img src="images/f2.png"  class="flag"  />{{(capitalize(contest.type)).replace('_', ' ') + ' - ' + contest.award.name}}</td>
+                        <td>one round</td>
+                        <td>{{contest.entry_fee}} EUR</td>
+                        <td><span class="greenfield">{{(contest.entry_fee * contest.entrants) * 0.9}}</span></td>
+                        <td>{{contest.entrant_count + ' / ' + contest.entrants}}</td>
+                        <td><span class="redfield" moment-interval="60000">{{(contest.start_at | amUtc | amLocal | amDifference : null : 'minutes' | amDurationFormat: 'minutes')}}</span></td>
+                        <td ng-if="!contest.is_user_entrant && contest.status == 'Created'"><button class="greenbtntbl" ng-click="gotoContest(contest)" >Join</button></td>
+                        <td ng-if="contest.is_user_entrant && contest.status == 'Created'"><button class="greenbtntbl" ng-click="gotoContest(contest)">Update</button></td>
+                        <td ng-if="contest.status == 'Locked'" class="text-center"><h5><span class="glyphicon glyphicon-lock"></span> Locked</h5></td>
+                        <td><button class="whitebtntbl" ng-if="contest.is_user_entrant && contest.status == 'Created'" ng-click="leaveContest(contest.id)">Leave</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid footer">
+    <div class="footer_container">
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">About</h4>
+            <ul class="footerlink">
+                <li><a  >About Draftbuddies</a></li>
+                <li><a  >Contact us</a></li>
+                <li><a  >How to play</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Help</h4>
+            <ul class="footerlink">
+                <li><a  >Terms of use</a></li>
+                <li><a  >Privacy policy</a></li>
+                <li><a  >Responsible gaming</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Social Media</h4>
+            <ul class="footerlink">
+                <li><a  ><img src="images/fb.png" class="footerlinkicon" />Facebook</a></li>
+                <li><a  ><img src="images/tw.png" class="footerlinkicon" />Twitter</a></li>
+                <li><a  ><img src="images/insta.png" class="footerlinkicon" />Instagram</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Available on</h4>
+            <ul class="footerlink">
+                <li><img src="images/playstore.png" class="appstore"  /> </li>
+                <li><img src="images/apple.png"  class="appstore"/> </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="footerlastimg"><img src="images/footerlast.png" class="img-responsive"> </div>

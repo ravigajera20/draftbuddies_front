@@ -1,0 +1,75 @@
+<div class="container-fluid" style="background-color: #000; padding-bottom: 30px;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3 class="text-white">Change Banners</h3>
+            <div class="row modal-section">
+                <div class="col-md-6">
+                    <h4 class="text-white">Left banner</h4>
+                    <div class="input-group">
+                        <input type="file" class="form-control" file-model="left_banner">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="uploadLeftBanner()">Update</button>
+                        </span>
+                    </div>
+                    <br>
+                    <h5 class="text-white">Current</h5>
+                    <img src="http://www.atoatechnologies.com/draft_buddies_beta/public/storage/uploads/left_banner">
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-white">Right banner</h4>
+                    <div class="input-group">
+                        <input type="file" class="form-control" file-model="right_banner">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="uploadRightBanner()">Update</button>
+                        </span>
+                    </div>
+                    <br>
+                    <h5 class="text-white">Current</h5>
+                    <img src="http://www.atoatechnologies.com/draft_buddies_beta/public/storage/uploads/right_banner">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="padding-bottom: 30px;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>Update Terms and conditions</h3>
+            <div class="row modal-section">
+                <div summernote config="options" ng-model="tandc" class="col-md-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+
+                </div>
+                <div class="col-md-2">
+                    <button class="greenbtntbl" ng-click="updatetandc()">Update</button>
+                </div>
+                <div class="col-md-5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="padding-bottom: 30px;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>Update Privacy Policy</h3>
+            <div class="row modal-section">
+                <div summernote config="options" ng-model="policy" class="col-md-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+
+                </div>
+                <div class="col-md-2">
+                    <button class="greenbtntbl" ng-click="updatepolicy()">Update</button>
+                </div>
+                <div class="col-md-5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="text-white">{{player.name + ' - ' + player.team.name}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row modal-section container">
+                    <div class="col-md-2 text-white" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="images/infotshurt.png" class="img-full">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Born in
+                            </div>
+                            <div class="col-md-6">
+                                {{player.bio.city}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Shirt #
+                            </div>
+                            <div class="col-md-6">
+                                {{player.bio.jersey_num}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Age
+                            </div>
+                            <div class="col-md-6" >
+                                {{player.bio.birth_date | amParse: 'YYYY' | amDifference : null : 'years'}} Years
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Weight
+                            </div>
+                            <div class="col-md-6">
+                                {{player.bio.weight}} kg
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-5 playerstats" style="height: 300px; overflow: auto;">
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Round</th>
+                                <th>Opp</th>
+                                <th>Goals</th>
+                                <th>Ass</th>
+                                <th>Att/Acc</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="stat in player.previous_stats">
+                                    <td ng-bind="stat.match.round_number"></td>
+                                    <td ng-bind="stat.opp_team.name"></td>
+                                    <td ng-bind="stat.goals"></td>
+                                    <td ng-bind="stat.goals_assist"></td>
+                                    <td ng-bind="stat.accurate_pass"></td>
+                                    <td ng-bind="stat.points" class="text-bright-green"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

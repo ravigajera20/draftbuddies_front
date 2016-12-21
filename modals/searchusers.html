@@ -1,0 +1,48 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Search users</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-3 control-label">User ID or Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="name" placeholder="UserID or name" ng-model="keyword">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row modal-section">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h5 class="players_name_text_white">Results:</h5>
+                        <div class="modalplayersection">
+                            <div class="row playerlist" ng-repeat="user in users">
+                                <div class="col-md-4">
+                                    <span class="players_name_text_white">{{user.name}}</span>
+                                    <br>
+                                    <small>{{user.username}}</small>
+                                </div>
+                                <div class="col-md-5">
+
+                                </div>
+                                <div class="col-md-3 pull-right">
+                                    <button class="greenbtntbl" ng-if="!user.is_friend && !user.is_sent_pending && !user.is_received_pending" ng-click="sendFriendRequest(user.id)">Add friend</button>
+                                    <button class="whitebtntbl" ng-if="user.is_friend" ng-click="removeFriend(user.id)">Unfriend</button>
+                                    <span class="disabled" ng-if="user.is_sent_pending" disabled>Request sent</span>
+                                    <button class="greenbtntbl" ng-if="user.is_received_pending" ng-click="acceptFriendRequest(user.request_id)">Accept</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

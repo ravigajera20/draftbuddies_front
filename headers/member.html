@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle mobilemenu" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" ><img src="images/logo.png" ></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav header_menu">
+                <li ui-sref="master.home" ng-class="{redactive: currentpage == 'home'}" ng-click="currentpage = 'home'"><a >Home</a></li>
+                <li ui-sref="master.lobby" ng-class="{redactive: currentpage == 'lobby'}" ng-click="currentpage = 'lobby'"><a >Lobby</a></li>
+                <li ui-sref="master.mycontests" ng-class="{redactive: currentpage == 'mycontests'}" ng-click="currentpage = 'mycontests'"><a >My contests</a></li>
+                <li ng-class="{redactive: currentpage == 'howtoplay'}" ng-click="currentpage = 'howtoplay'"><a >How to play</a></li>
+                <li ui-sref="master.referfriends" ng-class="{redactive: currentpage == 'refer'}" ng-click="currentpage = 'refer'"><a >Refer friends </a></li>
+                <li ng-click="opensearch()"><span class="glyphicon glyphicon-search" style="color: #fff; font-size: 20px; padding: 5px"></span></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle username" data-toggle="dropdown" >
+                        <img src="images/user.png">
+                        <span class="usernametxt" ng-bind="userdata.username"></span> <span class="caret"></span><br/><span class="greentxt" ng-bind="userdata.userbalance"></span> </a>
+                    <ul class="dropdown-menu userdrop">
+                        <li><a>Deposit fund</a></li>
+                        <li><a>Withdraw fund</a></li>
+                        <li ng-click="seeFriendRequests()"><a>Friend requests</a></li>
+                        <li ng-click="showFriends()"><a>My friends</a></li>
+                        <li ui-sref="master.profile"><a>My profile</a></li>
+                        <li><a>My account</a></li>
+                        <li><a>Responsible gaming</a></li>
+                        <li><a>Trasaction history</a></li>
+                        <li ng-click="logout();"><a >Logout</a></li>
+                    </ul>
+                </li>
+                <li><a  class="greenbtn depostfndbtn" ui-sref="master.depositmethods"> Deposit funds</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

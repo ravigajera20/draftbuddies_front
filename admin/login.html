@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="full-size">
+        <div class="loginbox padding-horizontal padding-vertical">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-white">DraftBuddies Admin Login</h3>
+                </div>
+            </div>
+            <form name="loginform" ng-submit="adminlogin()">
+                <div class="row modal-section">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control" type="email" placeholder="Email ID" ng-model="creds.usernameOrEmail" required>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="row modal-section">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control" type="password" placeholder="Password" ng-model="creds.password" required>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="row modal-section">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+                        <input class="greenbtntbl" type="submit" value="Login">
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

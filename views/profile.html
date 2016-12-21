@@ -1,0 +1,255 @@
+<div class="container">
+    <div class="col-lg-12">
+        <div class="row myacntpage">
+            <h2>Profile</h2>
+            <form role="form" ng-submit="updateProfile()" id="myacountform">
+                <div class="col-sm-6 formpart">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="name">First name</label>
+                            <input type="text" ng-model="profileFields.firstname" ng-disabled="!$scope.flags.isFirstnameUpdatable" class="form-control" id="name" >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name">Last name</label>
+                            <input type="text" ng-model="profileFields.surname" ng-disabled="!$scope.flags.isSurnameUpdatable" class="form-control" id="name" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth">Date of birth</label>
+                        <input type="date" class="form-control" ng-disabled="!$scope.flags.isBirthDateUpdatable" ng-model="profileFields.birthDate" id="birth" >
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Full address</label>
+                        <input type="text" class="form-control" ng-model="profileFields.address1" id="address" >
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" ng-model="profileFields.city" id="city" >
+                    </div>
+                    <div class="form-group">
+                        <label for="zipcode">Zip code</label>
+                        <input type="text" class="form-control" ng-model="profileFields.postalCode" id="zipcode" >
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" class="form-control" ng-model="profileFields.country" ng-disabled="!$scope.flags.isCountryUpdatable" name="country" required required ng-options="value.code as value.name for value in countries | filter:{currency:'EUR'}" ng-change="getRegions()" >
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="region">Region</label>
+                        <select id="region" class="form-control" ng-model="profileFields.region" name="region" required >
+                            <option value="0">Not Applicable</option>
+                            <option ng-value="region.id" ng-repeat="region in regions">{{region.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 formpart">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="name">Prefix</label>
+                            <input type="text" class="form-control" ng-model="profileFields.mobilePrefix" id="name" >
+                        </div>
+                        <div class="col-md-9">
+                            <label for="name">Mobile number</label>
+                            <input type="text" class="form-control" ng-model="profileFields.mobile" id="name" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency" class="form-control" ng-model="profileFields.currency" ng-disabled="!$scope.flags.isCurrencyUpdatable" name="currency" required ng-options="value.code as value.name for value in currencies" >
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="zone">Time zone</label>
+                        <select id="zone" ng-model="profileFields.timezone" ng-model="timezone" name="timezone" required class="form-control">
+                            <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
+                            <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
+                            <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT- 10:00) Hawaii</option>
+                            <option timeZoneId="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" value="-9">(GMT-09:00) Alaska</option>
+                            <option timeZoneId="5" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
+                            <option timeZoneId="6" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Tijuana, Baja California</option>
+                            <option timeZoneId="7" gmtAdjustment="GMT-07:00" useDaylightTime="0" value="-7">(GMT-07:00) Arizona</option>
+                            <option timeZoneId="8" gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+                            <option timeZoneId="9" gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
+                            <option timeZoneId="10" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Central America</option>
+                            <option timeZoneId="11" gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Central Time (US & Canada)</option>
+                            <option timeZoneId="12" gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+                            <option timeZoneId="13" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Saskatchewan</option>
+                            <option timeZoneId="14" gmtAdjustment="GMT-05:00" useDaylightTime="0" value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+                            <option timeZoneId="15" gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
+                            <option timeZoneId="16" gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Indiana (East)</option>
+                            <option timeZoneId="17" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
+                            <option timeZoneId="18" gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Caracas, La Paz</option>
+                            <option timeZoneId="19" gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Manaus</option>
+                            <option timeZoneId="20" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Santiago</option>
+                            <option timeZoneId="21" gmtAdjustment="GMT-03:30" useDaylightTime="1" value="-3.5">(GMT-03:30) Newfoundland</option>
+                            <option timeZoneId="22" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Brasilia</option>
+                            <option timeZoneId="23" gmtAdjustment="GMT-03:00" useDaylightTime="0" value="-3">(GMT-03:00) Buenos Aires, Georgetown</option>
+                            <option timeZoneId="24" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Greenland</option>
+                            <option timeZoneId="25" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Montevideo</option>
+                            <option timeZoneId="26" gmtAdjustment="GMT-02:00" useDaylightTime="1" value="-2">(GMT-02:00) Mid-Atlantic</option>
+                            <option timeZoneId="27" gmtAdjustment="GMT-01:00" useDaylightTime="0" value="-1">(GMT-01:00) Cape Verde Is.</option>
+                            <option timeZoneId="28" gmtAdjustment="GMT-01:00" useDaylightTime="1" value="-1">(GMT-01:00) Azores</option>
+                            <option timeZoneId="29" gmtAdjustment="GMT+00:00" useDaylightTime="0" value="0">(GMT+00:00) Casablanca, Monrovia, Reykjavik</option>
+                            <option timeZoneId="30" gmtAdjustment="GMT+00:00" useDaylightTime="1" value="0">(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
+                            <option timeZoneId="31" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+                            <option timeZoneId="32" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+                            <option timeZoneId="33" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+                            <option timeZoneId="34" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+                            <option timeZoneId="35" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) West Central Africa</option>
+                            <option timeZoneId="36" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Amman</option>
+                            <option timeZoneId="37" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Athens, Bucharest, Istanbul</option>
+                            <option timeZoneId="38" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Beirut</option>
+                            <option timeZoneId="39" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Cairo</option>
+                            <option timeZoneId="40" gmtAdjustment="GMT+02:00" useDaylightTime="0" value="2">(GMT+02:00) Harare, Pretoria</option>
+                            <option timeZoneId="41" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
+                            <option timeZoneId="42" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Jerusalem</option>
+                            <option timeZoneId="43" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Minsk</option>
+                            <option timeZoneId="44" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Windhoek</option>
+                            <option timeZoneId="45" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
+                            <option timeZoneId="46" gmtAdjustment="GMT+03:00" useDaylightTime="1" value="3">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+                            <option timeZoneId="47" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Nairobi</option>
+                            <option timeZoneId="48" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Tbilisi</option>
+                            <option timeZoneId="49" gmtAdjustment="GMT+03:30" useDaylightTime="1" value="3.5">(GMT+03:30) Tehran</option>
+                            <option timeZoneId="50" gmtAdjustment="GMT+04:00" useDaylightTime="0" value="4">(GMT+04:00) Abu Dhabi, Muscat</option>
+                            <option timeZoneId="51" gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Baku</option>
+                            <option timeZoneId="52" gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Yerevan</option>
+                            <option timeZoneId="53" gmtAdjustment="GMT+04:30" useDaylightTime="0" value="4.5">(GMT+04:30) Kabul</option>
+                            <option timeZoneId="54" gmtAdjustment="GMT+05:00" useDaylightTime="1" value="5">(GMT+05:00) Yekaterinburg</option>
+                            <option timeZoneId="55" gmtAdjustment="GMT+05:00" useDaylightTime="0" value="5">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
+                            <option timeZoneId="56" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Sri Jayawardenapura</option>
+                            <option timeZoneId="57" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                            <option timeZoneId="58" gmtAdjustment="GMT+05:45" useDaylightTime="0" value="5.75">(GMT+05:45) Kathmandu</option>
+                            <option timeZoneId="59" gmtAdjustment="GMT+06:00" useDaylightTime="1" value="6">(GMT+06:00) Almaty, Novosibirsk</option>
+                            <option timeZoneId="60" gmtAdjustment="GMT+06:00" useDaylightTime="0" value="6">(GMT+06:00) Astana, Dhaka</option>
+                            <option timeZoneId="61" gmtAdjustment="GMT+06:30" useDaylightTime="0" value="6.5">(GMT+06:30) Yangon (Rangoon)</option>
+                            <option timeZoneId="62" gmtAdjustment="GMT+07:00" useDaylightTime="0" value="7">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                            <option timeZoneId="63" gmtAdjustment="GMT+07:00" useDaylightTime="1" value="7">(GMT+07:00) Krasnoyarsk</option>
+                            <option timeZoneId="64" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+                            <option timeZoneId="65" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Kuala Lumpur, Singapore</option>
+                            <option timeZoneId="66" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Irkutsk, Ulaan Bataar</option>
+                            <option timeZoneId="67" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Perth</option>
+                            <option timeZoneId="68" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Taipei</option>
+                            <option timeZoneId="69" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                            <option timeZoneId="70" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Seoul</option>
+                            <option timeZoneId="71" gmtAdjustment="GMT+09:00" useDaylightTime="1" value="9">(GMT+09:00) Yakutsk</option>
+                            <option timeZoneId="72" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Adelaide</option>
+                            <option timeZoneId="73" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Darwin</option>
+                            <option timeZoneId="74" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Brisbane</option>
+                            <option timeZoneId="75" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Canberra, Melbourne, Sydney</option>
+                            <option timeZoneId="76" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Hobart</option>
+                            <option timeZoneId="77" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Guam, Port Moresby</option>
+                            <option timeZoneId="78" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Vladivostok</option>
+                            <option timeZoneId="79" gmtAdjustment="GMT+11:00" useDaylightTime="1" value="11">(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+                            <option timeZoneId="80" gmtAdjustment="GMT+12:00" useDaylightTime="1" value="12">(GMT+12:00) Auckland, Wellington</option>
+                            <option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
+                            <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku'alofa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpr">CPR number</label>
+                        <input type="text" class="form-control" ng-model="cpr" id="cpr" >
+                    </div>
+                    <div class="form-group">
+                        <label for="expenses">Expected monthly expenses</label>
+                        <input type="number" class="form-control" ng-model="profileFields.monthly_expenses" id="expenses" >
+                    </div>
+                    <div class="form-group">
+                        <label for="securityq">Select a security question</label>
+                        <select class="form-control" ng-model="profileFields.securityQuestion" id="securityq" name="security3">
+                            <option value="What is your Mother's maiden name?">What is your Mother's maiden name?</option>
+                            <option value="What is your favorite color?">What is your favorite color?</option>
+                            <option value="What is your mother's favorite aunt's favorite color?">What is your mother's favorite aunt's favorite color?</option>
+                            <option value="What is the name of town where you were born">What is the name of town where you were born?</option>
+                            <option value="What was your first favourite food?">What was your first favourite food?</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="securitya">Your answer to security question</label>
+                        <input type="text" class="form-control" ng-model="profileFields.securityAnswer" id="securitya" >
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <a  class="changepswd"> Change password <span class="glyphicon glyphicon-chevron-down"></span></a>
+                </div>
+
+                <div  class="col-xs-12 chnagepswdform">
+                    <div  class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Username">Current Password</label>
+                            <input type="password" class="form-control" id="Username" >
+                        </div>
+                    </div>
+                    <div  class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Username">New Password</label>
+                            <input type="password" class="form-control" id="Username" >
+                        </div>
+                    </div>
+                    <div  class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Username">Confirm New Password</label>
+                            <input type="password" class="form-control" id="Username" >
+                        </div>
+                    </div>
+                </div>
+
+                <div  class="col-xs-12 col-md-9 col-md-offset-2">
+                    <input class="whitebtntbl myacountbtn" type="submit" value="Update account" />
+                    <button class="greenbtntbl myacountbtn">Deposit funds</button>
+                    <button class="redbtntbl myacountbtn">Withdraw funds</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid footer">
+    <div class="footer_container">
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">About</h4>
+            <ul class="footerlink">
+                <li><a  >About Draftbuddies</a></li>
+                <li><a  >Contact us</a></li>
+                <li><a  >How to play</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Help</h4>
+            <ul class="footerlink">
+                <li><a  >Terms of use</a></li>
+                <li><a  >Privacy policy</a></li>
+                <li><a  >Responsible gaming</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Social Media</h4>
+            <ul class="footerlink">
+                <li><a  ><img src="images/fb.png" class="footerlinkicon" />Facebook</a></li>
+                <li><a  ><img src="images/tw.png" class="footerlinkicon" />Twitter</a></li>
+                <li><a  ><img src="images/insta.png" class="footerlinkicon" />Instagram</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <h4 class="footerlinkheader">Available on</h4>
+            <ul class="footerlink">
+                <li><img src="images/playstore.png" class="appstore"  /> </li>
+                <li><img src="images/apple.png"  class="appstore"/> </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="footerlastimg"><img src="images/footerlast.png" class="img-responsive"> </div>
