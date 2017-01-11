@@ -16,87 +16,37 @@
 <div class="container-fluid">
     <div class="row">
         <ul class="nav nav-tabs nav-justified hometab">
-            <li ng-click="clearFilters()"><a data-toggle="tab" ng-click="tabtoshow = 'all'" ng-class="{active: tabtoshow == 'all'}">All</a></li>
+            <li><a data-toggle="tab" ng-click="tabtoshow = 'competitions'" ng-class="{active: tabtoshow == 'competitions'}">Leagues and Matches</a></li>
             <li><a data-toggle="tab" ng-click="tabtoshow = 'fee'" ng-class="{active: tabtoshow == 'fee'}">Entry fees</a></li>
             <li><a data-toggle="tab" ng-click="tabtoshow = 'entrants'" ng-class="{active: tabtoshow == 'entrants'}">Entrants</a></li>
-            <li><a data-toggle="tab" ng-click="tabtoshow = 'competitions'" ng-class="{active: tabtoshow == 'competitions'}">Leagues</a></li>
-            <li><a data-toggle="tab" ng-click="tabtoshow = 'type'" ng-class="{active: tabtoshow == 'type'}">Pick type</a></li>
+            <li><a data-toggle="tab" ng-click="tabtoshow = 'prize'" ng-class="{active: tabtoshow == 'prize'}">Prizes</a></li>
             <!--<li class="text-center"><button class="btn btn-danger" ng-click="clearFilters()">Clear Filters</button></a></li>-->
             <li><a data-toggle="tab" > <button class="greenbtnbg createcontstbtn" ui-sref="master.createcontest"> Create a contest</button></a></li>
         </ul>
 
         <div class="tab-content">
             <div id="menu3" ng-class="{active: tabtoshow == 'fee'}" class="tab-pane fade in">
-                <div class="row container">
-                    <div class="col-md-2">
-                        <div class="input-group">
-                            <label>Minimum</label>
-                            <input class="form-control" ng-model="filter.fee.min" type="number" min="1">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="input-group">
-                            <label>Maximum</label>
-                            <input class="form-control" ng-model="filter.fee.max" type="number" min="10">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-danger" style="margin-top: 30px;" ng-click="filter.fee.min=1; filter.fee.max=100000;">Clear</button>
-                    </div>
-                </div>
             </div>
             <div id="menu4" ng-class="{active: tabtoshow == 'entrants'}" class="tab-pane fade in">
-                <div class="row container">
-                    <div class="col-md-2">
-                        <div class="input-group">
-                            <label>Minimum</label>
-                            <input class="form-control" type="number" ng-model="filter.entrants.min" min="1">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="input-group">
-                            <label>Maximum</label>
-                            <input class="form-control" type="number" ng-model="filter.entrants.max" min="2">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-danger" style="margin-top: 30px;" ng-click="filter.entrants.min=1; filter.entrants.max=100000;">Clear</button>
-                    </div>
-                </div>
+
             </div>
             <div id="menu6" ng-class="{active: tabtoshow == 'type'}" class="tab-pane fade in">
-                <div class="row container" style="padding-top: 20px; padding-left: 10px;">
-                    <div class="col-md-2">
-                        <label>
-                            <input type="radio" class="replace" ng-model="filter.type" value="pick_8">
-                            <div></div> Pick 8
-                        </label>
-                    </div>
-                    <div class="col-md-2">
-                        <label>
-                            <input type="radio" class="replace" ng-model="filter.type" value="pick_2">
-                            <div></div> Pick 2
-                        </label>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-danger" ng-click="filter.type = undefined;">Clear</button>
-                    </div>
-                </div>
+
             </div>
-            <div id="menu5" ng-class="{active: tabtoshow == 'competitions'}" class="tab-pane fade in">
+            <div id="menu5" ng-class="{active: tabtoshow == 'competitions'}" class="tab-pane fade in" style="background-color: #000;">
                 <div class="row leagueFilterRow">
                     <div class="col-md-1">
 
                     </div>
                     <div class="col-md-10">
-                        <ul rn-carousel rn-carousel-controls style="height: 120px;" class="image">
+                        <ul rn-carousel rn-carousel-controls style="height: 200px; padding-top: 30px;" class="image">
                             <li ng-repeat="league in leagues">
                                 <label class="layer">
                                     <input class="custom" type="radio" ng-model="filter.competition" name="league" ng-change="getMatches()" value="{{league.id}}">
                                     <div class="text-center leaguebox">
                                         <img src="images/{{league.code}}.png" alt="Premier League" title="Premier League">
                                         <br>
-                                        <div style="width: 100%" ng-bind="league.name"></div>
+                                        <div style="width: 100%; color: #fff;" ng-bind="league.name"></div>
                                     </div>
                                 </label>
                             </li>

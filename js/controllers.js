@@ -98,7 +98,6 @@ angular.module('dbuddies.controllers', [])
                 ).then(function (response) {
                     $rootScope.userdata.userbalance = response.kwargs.accounts[0].amount.toString() + ' ' + response.kwargs.accounts[0].currency;
                     $rootScope.loggedin = true;
-                    $state.go('master.home');
                 }, function (error) {
 
                 })

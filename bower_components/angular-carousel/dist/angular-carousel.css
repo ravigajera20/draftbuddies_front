@@ -55,15 +55,15 @@ div.rn-carousel-indicator span {
   .rn-carousel-control:hover {
     opacity: 1; }
   .rn-carousel-control.rn-carousel-control-prev {
-    left: 0.5em;
-    margin-right: 20px;
+    left: -0.5em;
+    top: 2em;
   }
     .rn-carousel-control.rn-carousel-control-prev:before {
       content: "<"; }
   .rn-carousel-control.rn-carousel-control-next {
-    right: 0.5em;
+    right: -0.5em;
+    top: 2em;
   }
     .rn-carousel-control.rn-carousel-control-next:before {
-      margin-left: 20px;
       content: ">";
     }

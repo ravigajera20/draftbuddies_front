@@ -309,7 +309,7 @@ white-space:nowrap;
 .hometab{background: #f8f8f8; background: -webkit-linear-gradient(#fefefe, #f8f8f8); background: -o-linear-gradient(#fefefe, #f8f8f8); background: -moz-linear-gradient(#fefefe, #f8f8f8);   background: linear-gradient(#fefefe, #f8f8f8);}
 .hometab li{ border-right:1px solid #d3d3d3; }
 .hometab li.active a{border-radius:0px !important;}
-.hometab li a{ color:#000; padding:13px 10px !important; line-height:44px;font-family:Helvetica_bold;}
+.hometab li a{ color:#5a5a5a; padding:13px 10px !important; line-height:44px;}
 .greenbtnbg{ background-image:url(../images/btn.png); height:44px; border:none; background-size:100% 100%; background-color:transparent; padding:5px 15px; color:#fff; font-family:Helvetica_bold; line-height:30px;}
 .leftarrow{ float:left; margin-top:5px; margin-left:10px;}
 .homevideobox{ padding:30px 0 40px 0; background:#000000;}
@@ -815,6 +815,9 @@ white-space:nowrap;
 .infocreatebox{float: left;}
 .filter_input{ width:100%; float:left; margin-top:5px;}
 .filter_input{padding-left:8px !important;}
+}
+.rn-carousel-control {
+    color: #e2e2e2;
 }
 
 .playerstats {

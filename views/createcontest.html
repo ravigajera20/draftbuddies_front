@@ -42,8 +42,8 @@
                 </h4>
             </div>
             <div class="row">
-                <div>
-                    <ul rn-carousel rn-carousel-controls style="height: 100px;" class="image">
+                <div class="col-md-12">
+                    <ul rn-carousel rn-carousel-controls style="height: 150px; padding-top: 30px;" class="image">
                         <li ng-repeat="league in leagues">
                             <label class="layer">
                                 <input class="custom" type="radio" ng-model="contest.competition_id" name="league" ng-change="getMatches()" value="{{league.id}}">
@@ -90,7 +90,7 @@
             </div>
         </div>
     </section>
-    <section  class="page-section" ng-if="contest.match_date != ''" id="sec-details">
+    <section  class="page-section" ng-if="contestfields.matches.length > 0" id="sec-details">
         <div class="container">
             <div class="row">
                 <h4 class="text-center text-uppercase">
@@ -141,8 +141,8 @@
         </div>
     </section>
     <section   class="page-section">
-        <div class="form-group text-center">
-            <input class="btn btn-lg btn-default" ng-if="contest.match_date != ''" type="submit" value="Continue" />
+        <div class="form-group text-center" ng-if="contestfields.matches.length > 0" style="margin-bottom: 0px;">
+            <input class="btn btn-lg btn-default" type="submit" value="Continue" />
         </div>
     </section>
     </div>
