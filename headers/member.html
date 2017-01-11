@@ -10,11 +10,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav header_menu">
-                <li ui-sref="master.home" ng-class="{redactive: currentpage == 'home'}" ng-click="currentpage = 'home'"><a >Home</a></li>
-                <li ui-sref="master.lobby" ng-class="{redactive: currentpage == 'lobby'}" ng-click="currentpage = 'lobby'"><a >Lobby</a></li>
-                <li ui-sref="master.mycontests" ng-class="{redactive: currentpage == 'mycontests'}" ng-click="currentpage = 'mycontests'"><a >My contests</a></li>
-                <li ng-class="{redactive: currentpage == 'howtoplay'}" ng-click="currentpage = 'howtoplay'"><a >How to play</a></li>
-                <li ui-sref="master.referfriends" ng-class="{redactive: currentpage == 'refer'}" ng-click="currentpage = 'refer'"><a >Refer friends </a></li>
+                <li ui-sref="master.lobby" ng-class="{active: currentpage == 'lobby'}" ng-click="currentpage = 'lobby'"><a >Lobby</a></li>
+                <li ui-sref="master.mycontests" ng-class="{active: currentpage == 'mycontests'}" ng-click="currentpage = 'mycontests'"><a >My contests</a></li>
+                <li ng-class="{active: currentpage == 'howtoplay'}" ng-click="currentpage = 'howtoplay'"><a >How to play</a></li>
+                <li ui-sref="master.referfriends" ng-class="{active: currentpage == 'refer'}" ng-click="currentpage = 'refer'"><a >Refer friends </a></li>
                 <li ng-click="opensearch()"><span class="glyphicon glyphicon-search" style="color: #fff; font-size: 20px; padding: 5px"></span></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

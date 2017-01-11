@@ -279,7 +279,7 @@ white-space:nowrap;
 }
 .header{ border-radius:0px !important; height:75px; background-color:#202020; margin-bottom:0px !important; background: -webkit-linear-gradient(#222222, #191819); background: -o-linear-gradient(#222222, #191819); background: -moz-linear-gradient(#222222, #191819);   background: linear-gradient(#222222, #191819); }
 .header .container-fluid{background: url(../images/header_bg.png); background-position:right; background-repeat:no-repeat;}
-.logo{ padding:5px 28px !important; margin-right:7px;}
+.logo{ padding:10px 28px !important; margin-right:7px;}
 .logo img{ width:100%; background-size:100% 100%;} 
 .blod_font{font-weight:bold;}
 .header_menu li{ border-left:1px solid #000; padding:20px 0; }
@@ -303,7 +303,6 @@ white-space:nowrap;
 .depostfndbtn{ margin-right:12px; margin-left:20px;}
 .usernametxt{ float:left; margin:0 10px;}
 .username img{ float:left;}
-.homevideoboxpart1{ width:85%; margin-left:10%; margin-right:5%;}
 .homevideoboxpart2{ width:85%; margin-left:5%; margin-right:10%;}
 .homevideoboxpart1 img{ width:100%;background-size:100% 100%;}
 .homevideoboxpart2 img{ width:100%;background-size:100% 100%;}
@@ -401,7 +400,7 @@ white-space:nowrap;
 .fanparagraph{ font-size:20px; color:#333;float:left; margin-top:20px; width:100%;}
 .fantalkbox{ width:100%; float:left; padding:50px 80px 0 80px;}
 
-.homebannerbox{ background-image:url(../images/homebanner.png);  min-height:600px; padding-bottom:40px;background-size:100% 100%;}
+.homebannerbox{ background-image:url(../images/homebanner.png);  min-height:500px; background-size:100% 100%;}
 .homebannerappstorebtnbox{ width:320px; margin:0 auto; margin-top:40px; margin-bottom:30px;}
 .homebannerappstorebtnbox a:last-child{ margin-left:5px;}
 .playbutton {

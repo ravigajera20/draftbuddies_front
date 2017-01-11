@@ -2,7 +2,7 @@ angular.module('dbuddies.controllers', [])
 
     .controller('masterCtrl', function ($rootScope, $scope, $wamp, $http, $ocLazyLoad, $state, $cookies, $window, ModalService) {
 
-        $rootScope.apiUrl = 'http://54.186.246.183/draft_buddies_beta/public/api/';
+        $rootScope.apiUrl = 'http://api.draftbuddies.com/api/';
         $rootScope.wampParams = {
             "filterBySlug": [],
             "filterByVendor": [],
@@ -482,6 +482,14 @@ angular.module('dbuddies.controllers', [])
 
         $scope.gologin = function () {
 
+            if($scope.logincreds.usernameOrEmail == null || $scope.logincreds.usernameOrEmail == '') {
+                return alert('Please enter your username or email to login!');
+            }
+
+            if($scope.logincreds.password == null || $scope.logincreds.password == '') {
+                return alert('Please enter your password to login!');
+            }
+
             // $http.post($rootScope.apiUrl + 'login/web', $scope.logincreds)
             //     .then(function (response) {
             //         if(response.status == 200) {
@@ -661,7 +669,7 @@ angular.module('dbuddies.controllers', [])
 
                                 }
                                 $rootScope.loggedin = true;
-                                $state.go('master.home');
+                                $state.go('master.lobby');
 
                             }
                             else {
@@ -708,13 +716,8 @@ angular.module('dbuddies.controllers', [])
                                 email: $scope.signupcreds.email,
                                 username: $scope.signupcreds.username,
                                 password: $scope.signupcreds.upswd,
-                                birthDate: $scope.signupcreds.dob.getFullYear() + '-' + ('0' + (parseInt($scope.signupcreds.dob.getMonth()) + 1)).slice(-2) + '-' + (('0' + $scope.signupcreds.dob.getDate()).slice(-2)),
-                                mobilePrefix: $scope.signupcreds.mobileprefix,
-                                mobile: $scope.signupcreds.phone,
                                 country: $scope.signupcreds.country,
-                                currency: $scope.signupcreds.currency,
-                                monthly_expense: $scope.signupcreds.monthly_expense,
-                                cpr: $scope.signupcreds.cpr,
+                                currency: "EUR",
                                 iovationBlackBox: $rootScope.ioBlackBox,
                                 affl_code: window.location.href.split('?')[1].split('#')[0].split('=')[1]
                             };
@@ -729,13 +732,8 @@ angular.module('dbuddies.controllers', [])
                             email: $scope.signupcreds.email,
                             username: $scope.signupcreds.username,
                             password: $scope.signupcreds.upswd,
-                            birthDate: $scope.signupcreds.dob.getFullYear() + '-' + ('0' + (parseInt($scope.signupcreds.dob.getMonth()) + 1)).slice(-2) + '-' + (('0' + $scope.signupcreds.dob.getDate()).slice(-2)),
-                            mobilePrefix: $scope.signupcreds.mobileprefix,
-                            mobile: $scope.signupcreds.phone,
                             country: $scope.signupcreds.country,
-                            currency: $scope.signupcreds.currency,
-                            monthly_expense: $scope.signupcreds.monthly_expense,
-                            cpr: $scope.signupcreds.cpr,
+                            currency: "EUR",
                             iovationBlackBox: $rootScope.ioBlackBox
                         };
                     }
@@ -746,7 +744,7 @@ angular.module('dbuddies.controllers', [])
                     ).then(function (response) {
 
                         if(response == null) {
-                            $http.post('http://www.atoatechnologies.com/draft_buddies_beta/public/api/register', data)
+                            $http.post($rootScope.apiUrl + 'register', data)
                                 .then(function (response) {
                                     if(response.data.status == 'success') {
                                         alert('You have successfully signed up! Login to continue');
@@ -1730,7 +1728,7 @@ angular.module('dbuddies.controllers', [])
     })
     .controller('adminCtrl', function ($scope, $rootScope, $state, $http, ModalService) {
 
-        $rootScope.apiUrl = 'http://54.186.246.183/draft_buddies_beta/public/api/';
+        $rootScope.apiUrl = 'http://api.draftbuddies.com/public/api/';
 
         try{
             $rootScope.adminloggedin = sessionStorage.getItem('adminloggedin');
