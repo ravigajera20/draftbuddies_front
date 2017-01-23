@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var dbuddies = angular.module('dbuddies', ['ui.router', 'dbuddies.controllers', 'vxWamp', 'oc.lazyLoad', 'ngCookies', 'ngSanitize', 'angular-carousel', 'angularMoment', 'angularModalService', '720kb.socialshare', 'ngclipboard', 'ngLoadingSpinner','ngFileUpload', 'summernote']);
+var dbuddies = angular.module('dbuddies', ['ui.router', 'dbuddies.controllers', 'vxWamp', 'oc.lazyLoad', 'ngCookies', 'ngSanitize', 'angular-carousel', 'angularMoment', 'angularModalService', '720kb.socialshare', 'ngclipboard', 'ngLoadingSpinner','ngFileUpload', 'summernote', 'ysilvela.socket-io']);
 
 dbuddies.config(function ($stateProvider, $urlRouterProvider, $wampProvider) {
 
@@ -194,6 +194,18 @@ dbuddies.config(function ($stateProvider, $urlRouterProvider, $wampProvider) {
         })
     }
 }])
+
+.factory('liveSocket', function (socketFactory) {
+
+    var myIoSocket = io.connect('http://live.draftbuddies.com');
+
+    var mySocket = socketFactory({
+        ioSocket: myIoSocket
+    });
+
+    return mySocket;
+
+})
 
 .run(function ($wamp, $cookies, $rootScope, $state) {
     $wamp.open();

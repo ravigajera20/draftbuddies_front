@@ -624,6 +624,11 @@ white-space:nowrap;
 #Friends{ position:relative;}
 #Requests{ position:relative;}
 
+.filter-leagues {
+    padding-bottom: 30px;
+    color: #f2f2f2;
+}
+
 @media screen and (min-width:1201px) and (max-width:1270px)
 {
 .leftarrow{ float:left; margin-top:10px; margin-left:5px; width:15px;background-size:100% 100%;}

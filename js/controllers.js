@@ -1295,16 +1295,27 @@ angular.module('dbuddies.controllers', [])
     .controller('lobbyCtrl', function ($rootScope, $scope, $http, $state, ModalService) {
 
         $scope.contests = [];
+        $scope.dates = [];
+        $scope.matches = [];
+        $scope.days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        $scope.startdate = new Date();
+        $scope.startdate.setDate($scope.startdate.getUTCDate() + 1);
+        $scope.enddate = new Date();
+        $scope.enddate.setDate($scope.startdate.getUTCDate() + 6);
+        $scope.dateoffset = 'today';
+
+        for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getUTCDate() + 1)) {
+            $scope.dates.push(new Date(d));
+        }
+
+        $scope.today = new Date();
+
+        $scope.contest = {
+            match_date: $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2)
+        }
+
         $scope.tabtoshow = 'fee';
         $scope.filter = {
-            fee: {
-                min: 1,
-                max: 1000
-            },
-            entrants: {
-                min: 2,
-                max: 100000
-            }
         }
         $scope.leagues = [];
         
@@ -1330,17 +1341,38 @@ angular.module('dbuddies.controllers', [])
         }, function (error) {
         })
 
-        $scope.clearFilters = function () {
-            $scope.filter = {
-                fee: {
-                    min: 1,
-                    max: 1000
-                },
-                entrants: {
-                    min: 2,
-                    max: 100000
-                }
+        $scope.getMatches = function (date, offset) {
+            if(offset) {
+                $scope.dateoffset = offset;
             }
+            if($scope.dateoffset == 'today') {
+                $scope.filter.match_date = $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2)
+            }
+            else {
+                $scope.filter.match_date = $scope.dates[$scope.dateoffset].getUTCFullYear() + '-' + ('0' + ($scope.dates[$scope.dateoffset].getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.dates[$scope.dateoffset].getUTCDate()).slice(-2);
+            }
+            $http({
+                method: 'GET',
+                url: $rootScope.apiUrl + 'matches',
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('user_token')
+                },
+                params: {
+                    competition_id: $scope.filter.competition,
+                    match_date: date,
+                    type: ''
+                }
+            }).then(function (response) {
+                response.data.data.forEach(function (value, index) {
+                    value.scheduled_on = new Date(value.scheduled_on);
+                })
+                $scope.matches = response.data.data;
+            }, function (error) {
+            })
+        }
+
+        $scope.clearFilters = function () {
+
         }
 
         $scope.gotoContest = function (contest) {
@@ -1394,7 +1426,7 @@ angular.module('dbuddies.controllers', [])
 
         $scope.contest = {
             competition_id: '',
-            match_date: $scope.today.toDateString(),
+            match_date: $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2),
             type: ''
         }
 
@@ -1440,6 +1472,9 @@ angular.module('dbuddies.controllers', [])
                 },
                 params: $scope.contest
             }).then(function (response) {
+                response.data.data.forEach(function (value, index) {
+                    value.scheduled_on = new Date(value.scheduled_on);
+                })
                 $scope.matches = response.data.data;
             }, function (error) {
             })
@@ -1541,9 +1576,13 @@ angular.module('dbuddies.controllers', [])
         }
         
     })
-    .controller('livepick8Ctrl', function ($scope, $rootScope, $http, $state, ModalService) {
+    .controller('livepick8Ctrl', function ($scope, $rootScope, $http, $state, ModalService, liveSocket) {
 
+        liveSocket.emit('ping', {name: 'abc'});
 
+        liveSocket.on('pingback', function (data) {
+            console.log(data);
+        })
 
     })
     .controller('depositMethodsCtrl', function ($scope, $rootScope, $wamp, $state) {

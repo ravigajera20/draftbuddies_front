@@ -72,7 +72,7 @@
             </div>
             <div class="row text-center">
                 <label style="padding: 10px;">
-                    <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" value="{{today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2) + ' ' + ('0' + today.getSeconds()).slice(-2) + ':' + ('0' + today.getMinutes()).slice(-2) + ':' + ('0' + today.getHours()).slice(-2)}}" ng-change="getMatches()" name="match_day">
+                    <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" value="{{today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)}}" ng-change="getMatches()" name="match_day">
                     <div></div>  Full Round
                 </label>
                 <label style="padding: 10px;" ng-repeat="cdate in dates">
@@ -84,13 +84,13 @@
                     <p>
                         {{match.team1.name + ' vs. ' + match.team2.name}}
                         <br>
-                        <small>{{match.scheduled_on}}</small>
+                        <small>{{match.scheduled_on | date: 'dd-MM-yyyy HH:mm' : match.scheduled_on.getTimezoneOffset().toString()}}</small>
                     </p>
                 </div>
             </div>
         </div>
     </section>
-    <section  class="page-section" ng-if="contestfields.matches.length > 0" id="sec-details">
+    <section  class="page-section" ng-if="matches.length > 0" id="sec-details">
         <div class="container">
             <div class="row">
                 <h4 class="text-center text-uppercase">

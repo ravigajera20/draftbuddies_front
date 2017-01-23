@@ -38,19 +38,45 @@
                     <div class="col-md-1">
 
                     </div>
-                    <div class="col-md-10">
-                        <ul rn-carousel rn-carousel-controls style="height: 200px; padding-top: 30px;" class="image">
+                    <div class="col-md-10 filter-leagues">
+                        <ul rn-carousel rn-carousel-controls style="height: 170px; padding-top: 30px;" class="image">
                             <li ng-repeat="league in leagues">
                                 <label class="layer">
-                                    <input class="custom" type="radio" ng-model="filter.competition" name="league" ng-change="getMatches()" value="{{league.id}}">
+                                    <input class="custom" type="radio" ng-model="filter.competition" name="league" ng-change="getMatches(contest.match_date)" value="{{league.id}}">
                                     <div class="text-center leaguebox">
-                                        <img src="images/{{league.code}}.png" alt="Premier League" title="Premier League">
+                                        <img src="images/{{league.code}}.png" >
                                         <br>
                                         <div style="width: 100%; color: #fff;" ng-bind="league.common_name"></div>
                                     </div>
                                 </label>
                             </li>
                         </ul>
+                        <div class="row" ng-if="filter.competition">
+                            <h4 class="text-center text-uppercase">
+                                Pick Matchday
+                                <a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+                                    <img src="images/icons/info.png" alt="">
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="row text-center" ng-if="filter.competition">
+                            <label style="padding: 10px;">
+                                <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" value="{{today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)}}" ng-change="getMatches(today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2), 'today')" name="match_day">
+                                <div></div>  Full Round
+                            </label>
+                            <label style="padding: 10px;" ng-repeat="cdate in dates">
+                                <input class="replace" type="radio" ng-model="contest.match_date" value="{{cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)}}" ng-change="getMatches(cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2), $index)" name="match_day">
+                                <div></div>  {{ days[cdate.getDay()] + ' , ' + cdate.getDate() + '/' + cdate.getMonth()}}
+                            </label>
+                        </div>
+                        <div class="col-md-3" ng-repeat="match in matches" ng-if="filter.competition">
+                            <p>
+                                {{match.team1.name + ' vs. ' + match.team2.name}}
+                                <br>
+                                <small>{{match.scheduled_on | date: 'dd-MM-yyyy HH:mm' : match.scheduled_on.getTimezoneOffset().toString()}}</small>
+                            </p>
+                        </div>
+                    </div>
                     </div>
                     <div class="col-md-1">
 
@@ -75,7 +101,7 @@
                     </tr>
                     </thead>
                     <tbody class="blod_font">
-                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type}" ng-if="(contest.entry_fee <= filter.fee.max && contest.entry_fee >= filter.fee.min) && (contest.entrants <= filter.entrants.max && contest.entrants >= filter.entrants.min)">
+                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type, start_at: $scope.matchstring() : filter.match_date}" ng-if="(contest.entry_fee <= filter.fee.max && contest.entry_fee >= filter.fee.min) && (contest.entrants <= filter.entrants.max && contest.entrants >= filter.entrants.min)">
                         <td ng-click="getContestInfo(contest.id)"><img src="images/f2.png"  class="flag"  />{{(capitalize(contest.type)).replace('_', ' ') + ' - ' + contest.award.name}}</td>
                         <td>one round</td>
                         <td>{{contest.entry_fee}} EUR</td>
