@@ -26,9 +26,32 @@
 
         <div class="tab-content">
             <div id="menu3" ng-class="{active: tabtoshow == 'fee'}" class="tab-pane fade in">
+                <div class="row text-center">
+                    <label style="padding: 10px;">
+                        <input class="replace" type="radio" ng-checked="true" ng-model="filtermods.fee" value="100" ng-change="setfee(0,100)" name="feemod">
+                        <div></div>  0-100
+                    </label>
+                    <label style="padding: 10px;">
+                        <input class="replace" type="radio" ng-model="filtermods.fee" value="200" ng-change="setfee(101,500)" name="feemod">
+                        <div></div>  101-500
+                    </label>
+                </div>
             </div>
             <div id="menu4" ng-class="{active: tabtoshow == 'entrants'}" class="tab-pane fade in">
-
+                <div class="row text-center">
+                    <label style="padding: 10px;">
+                        <input class="replace" type="radio" ng-model="filtermods.entrants" value="10" ng-checked="true" ng-change="setentrants(0,10)" name="entrantmod">
+                        <div></div>  0-10
+                    </label>
+                    <label style="padding: 10px;">
+                        <input class="replace" type="radio" ng-model="filtermods.entrants" value="50" ng-change="setentrants(11,50)" name="entrantmod">
+                        <div></div>  11-50
+                    </label>
+                    <label style="padding: 10px;">
+                        <input class="replace" type="radio" ng-model="filtermods.entrants" value="100" ng-change="setentrants(51,100)" name="entrantmod">
+                        <div></div>  51-100
+                    </label>
+                </div>
             </div>
             <div id="menu6" ng-class="{active: tabtoshow == 'type'}" class="tab-pane fade in">
 
@@ -101,7 +124,7 @@
                     </tr>
                     </thead>
                     <tbody class="blod_font">
-                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type}" ng-if="(contest.entry_fee <= filter.fee.max && contest.entry_fee >= filter.fee.min) && (contest.entrants <= filter.entrants.max && contest.entrants >= filter.entrants.min)">
+                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type, start_at: filter.match_date} | filter: matchEntrants | filter: matchFee" >
                         <td ng-click="getContestInfo(contest.id)"><img src="images/f2.png"  class="flag"  />{{(capitalize(contest.type)).replace('_', ' ') + ' - ' + contest.award.name}}</td>
                         <td>one round</td>
                         <td>{{contest.entry_fee}} EUR</td>

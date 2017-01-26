@@ -778,7 +778,7 @@ angular.module('dbuddies.controllers', [])
     })
     .controller('mycontestsCtrl', function ($rootScope, $scope, $http, $state, ModalService) {
         
-        $scope.tabtoshow = 'live';
+        $scope.tabtoshow = '';
         $scope.contests = [];
         $scope.status = [];
         $scope.toinvite = [];
@@ -1304,6 +1304,7 @@ angular.module('dbuddies.controllers', [])
         $scope.enddate.setDate($scope.startdate.getUTCDate() + 6);
         $scope.dateoffset = 'today';
 
+
         for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getUTCDate() + 1)) {
             $scope.dates.push(new Date(d));
         }
@@ -1316,7 +1317,38 @@ angular.module('dbuddies.controllers', [])
 
         $scope.tabtoshow = 'fee';
         $scope.filter = {
+            fee: {
+                min: 1,
+                max: 1000
+            },
+            entrants: {
+                min: 0,
+                max: 100000
+            }
         }
+
+        $scope.setentrants = function (min, max) {
+            $scope.filter.entrants = {
+                min: min,
+                max: max
+            }
+        }
+
+        $scope.setfee = function (min, max) {
+            $scope.filter.fee = {
+                min: min,
+                max: max
+            }
+        }
+
+        $scope.matchEntrants = function (item) {
+            return (item.entrant_count >= $scope.filter.entrants.min && item.entrant_count <= $scope.filter.entrants.max);
+        }
+
+        $scope.matchFee = function (item) {
+            return (item.entry_fee >= $scope.filter.fee.min && item.entry_fee <= $scope.filter.fee.max);
+        }
+
         $scope.leagues = [];
         
         $http({
