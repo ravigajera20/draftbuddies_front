@@ -1315,7 +1315,7 @@ angular.module('dbuddies.controllers', [])
             match_date: $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2)
         }
 
-        $scope.tabtoshow = 'fee';
+        $scope.tabtoshow = 'entrants';
         $scope.filter = {
             fee: {
                 min: 1,

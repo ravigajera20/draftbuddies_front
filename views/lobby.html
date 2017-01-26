@@ -16,10 +16,10 @@
 <div class="container-fluid">
     <div class="row">
         <ul class="nav nav-tabs nav-justified hometab">
-            <li><a data-toggle="tab" ng-click="tabtoshow = 'competitions'" ng-class="{active: tabtoshow == 'competitions'}">Leagues and Matches</a></li>
-            <li><a data-toggle="tab" ng-click="tabtoshow = 'fee'" ng-class="{active: tabtoshow == 'fee'}">Entry fees</a></li>
-            <li><a data-toggle="tab" ng-click="tabtoshow = 'entrants'" ng-class="{active: tabtoshow == 'entrants'}">Entrants</a></li>
-            <li><a data-toggle="tab" ng-click="tabtoshow = 'prize'" ng-class="{active: tabtoshow == 'prize'}">Prizes</a></li>
+            <li ng-class="{active: tabtoshow == 'competitions'}"><a data-toggle="tab" ng-click="tabtoshow = 'competitions'" >Leagues and Matches</a></li>
+            <li ng-class="{active: tabtoshow == 'fee'}"><a data-toggle="tab" ng-click="tabtoshow = 'fee'" >Entry fees</a></li>
+            <li ng-class="{active: tabtoshow == 'entrants'}"><a data-toggle="tab" ng-click="tabtoshow = 'entrants'" >Entrants</a></li>
+            <li ng-class="{active: tabtoshow == 'prize'}"><a data-toggle="tab" ng-click="tabtoshow = 'prize'" >Prizes</a></li>
             <!--<li class="text-center"><button class="btn btn-danger" ng-click="clearFilters()">Clear Filters</button></a></li>-->
             <li><a data-toggle="tab" > <button class="greenbtnbg createcontstbtn" ui-sref="master.createcontest"> Create a contest</button></a></li>
         </ul>
@@ -29,11 +29,11 @@
                 <div class="row text-center">
                     <label style="padding: 10px;">
                         <input class="replace" type="radio" ng-checked="true" ng-model="filtermods.fee" value="100" ng-change="setfee(0,100)" name="feemod">
-                        <div></div>  0-100
+                        <div></div> € 0-100
                     </label>
                     <label style="padding: 10px;">
                         <input class="replace" type="radio" ng-model="filtermods.fee" value="200" ng-change="setfee(101,500)" name="feemod">
-                        <div></div>  101-500
+                        <div></div> € 101-500
                     </label>
                 </div>
             </div>
