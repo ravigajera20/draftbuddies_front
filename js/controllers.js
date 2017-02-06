@@ -1513,6 +1513,11 @@ angular.module('dbuddies.controllers', [])
         }
 
         $scope.getMatches = function () {
+
+            if($scope.contest.match_date == ('["' + $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2) + '"]')) {
+                return;
+            }
+
             $http({
                 method: 'GET',
                 url: $rootScope.apiUrl + 'matches',
