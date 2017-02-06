@@ -16,16 +16,19 @@
                                     <img ng-src="{{selection.striker[0] ? 'images/infotshurt.png' : 'images/infotshurt3.png'}}">
                                     <input type="hidden" ng-model="selection.striker[0]" name="player[]" required>
                                     <label style="color: #fff">{{selection.striker[0].player.name}}</label>
+                                    <label ng-if="selection.striker[0]" style="color: #fff; font-size: smaller;">€ {{selection.striker[0].player.salary}}</label>
                                 </div>
                                 <div class="col-md-4" ng-click="removePlayer(selection.striker[1])">
                                     <img ng-src="{{selection.striker[1] ? 'images/infotshurt.png' : 'images/infotshurt3.png'}}">
                                     <input type="hidden" ng-model="selection.striker[1]" name="player[]" required>
                                     <label style="color: #fff">{{selection.striker[1].player.name}}</label>
+                                    <label ng-if="selection.striker[1]" style="color: #fff; font-size: smaller;">€ {{selection.striker[1].player.salary}}</label>
                                 </div>
                                 <div class="col-md-4" ng-click="removePlayer(selection.striker[2])">
                                     <img ng-src="{{selection.striker[2] ? 'images/infotshurt.png' : 'images/infotshurt3.png'}}">
                                     <input type="hidden" ng-model="selection.striker[2]" name="player[]" required>
                                     <label style="color: #fff">{{selection.striker[2].player.name}}</label>
+                                    <label ng-if="selection.striker[2]" style="color: #fff; font-size: smaller;">€ {{selection.striker[2].player.salary}}</label>
                                 </div>
                             </div>
                             <div class="row pickrow" >
@@ -33,16 +36,19 @@
                                     <img ng-src="{{selection.om[0] ? 'images/infotshurt.png' : 'images/infotshurt2.png'}}">
                                     <input type="hidden" ng-model="selection.om[0]" name="player[]" required>
                                     <label style="color: #fff">{{selection.om[0].player.name}}</label>
+                                    <label ng-if="selection.om[0]" style="color: #fff; font-size: smaller;">€ {{selection.om[0].player.salary}}</label>
                                 </div>
                                 <div class="col-md-4" ng-click="removePlayer(selection.om[1])">
                                     <img ng-src="{{selection.om[1] ? 'images/infotshurt.png' : 'images/infotshurt2.png'}}">
                                     <input type="hidden" ng-model="selection.om[1]" name="player[]" required>
                                     <label style="color: #fff">{{selection.om[1].player.name}}</label>
+                                    <label ng-if="selection.om[1]" style="color: #fff; font-size: smaller;">€ {{selection.om[1].player.salary}}</label>
                                 </div>
                                 <div class="col-md-4" ng-click="removePlayer(selection.om[2])">
                                     <img ng-src="{{selection.om[2] ? 'images/infotshurt.png' : 'images/infotshurt2.png'}}">
                                     <input type="hidden" ng-model="selection.om[2]" name="player[]" required>
                                     <label style="color: #fff">{{selection.om[2].player.name}}</label>
+                                    <label ng-if="selection.om[2]" style="color: #fff; font-size: smaller;">€ {{selection.om[2].player.salary}}</label>
                                 </div>
                             </div>
                             <div class="row pickrow" >
@@ -53,6 +59,7 @@
                                     <img ng-src="{{selection.dm[0] ? 'images/infotshurt.png' : 'images/infotshurt2.png'}}">
                                     <input type="hidden" ng-model="selection.dm[0]" name="player[]" required>
                                     <label style="color: #fff">{{selection.dm[0].player.name}}</label>
+                                    <label ng-if="selection.dm[0]" style="color: #fff; font-size: smaller;">€ {{selection.dm[0].player.salary}}</label>
                                 </div>
                                 <div class="col-md-4">
 
@@ -90,6 +97,7 @@
                                     <img ng-src="{{selection.striker[0] ? 'images/infotshurt.png' : 'images/infotshurt3.png'}}">
                                     <input type="hidden" ng-model="selection.striker[0]" name="player[]" required>
                                     <label style="color: #fff">{{selection.striker[0].player.name}}</label>
+                                    <label ng-if="selection.striker[0]" style="color: #fff; font-size: smaller;">€ {{selection.striker[0].player.salary}}</label>
                                 </div>
                                 <div class="col-md-4">
                                 </div>
@@ -105,6 +113,7 @@
                                     <img ng-src="{{selection.dm[0] ? 'images/infotshurt.png' : 'images/infotshurt2.png'}}">
                                     <input type="hidden" ng-model="selection.dm[0]" name="player[]" required>
                                     <label style="color: #fff">{{selection.dm[0].player.name}}</label>
+                                    <label ng-if="selection.dm[0]" style="color: #fff; font-size: smaller;">€ {{selection.dm[0].player.salary}}</label>
                                 </div>
                             </div>
                         </div>

@@ -124,7 +124,7 @@
                     </tr>
                     </thead>
                     <tbody class="blod_font">
-                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type, start_at: filter.match_date} | filter: matchEntrants | filter: matchFee" >
+                    <tr ng-repeat="contest in contests | filter: {competition_id: filter.competition, type: filter.type, start_at: filter.match_date}" >
                         <td ng-click="getContestInfo(contest.id)"><img src="images/f2.png"  class="flag"  />{{(capitalize(contest.type)).replace('_', ' ') + ' - ' + contest.award.name}}</td>
                         <td>one round</td>
                         <td>{{contest.entry_fee}} EUR</td>
