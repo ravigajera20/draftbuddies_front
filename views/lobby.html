@@ -85,7 +85,7 @@
                         <div class="row text-center" ng-if="filter.competition">
                             <label style="padding: 10px;">
                                 <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" value="{{today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)}}" ng-change="getMatches(today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2), 'today')" name="match_day">
-                                <div></div>  Full Round
+                                <div></div>  Today
                             </label>
                             <label style="padding: 10px;" ng-repeat="cdate in dates">
                                 <input class="replace" type="radio" ng-model="contest.match_date" value="{{cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)}}" ng-change="getMatches(cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2), $index)" name="match_day">

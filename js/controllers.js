@@ -1398,7 +1398,7 @@ angular.module('dbuddies.controllers', [])
                 },
                 params: {
                     competition_id: $scope.filter.competition,
-                    match_date: date,
+                    match_date: JSON.stringify([date]),
                     type: ''
                 }
             }).then(function (response) {
