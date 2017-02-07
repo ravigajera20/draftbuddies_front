@@ -668,7 +668,7 @@ angular.module('dbuddies.controllers', [])
 
                                 }
                                 $rootScope.loggedin = true;
-                                $state.go('master.lobby');
+                                $state.go('master.mycontests');
 
                             }
                             else {
@@ -1306,13 +1306,13 @@ angular.module('dbuddies.controllers', [])
         $scope.matches = [];
         $scope.days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         $scope.startdate = new Date();
-        $scope.startdate.setDate($scope.startdate.getUTCDate() + 1);
+        $scope.startdate.setDate($scope.startdate.getDate() + 1);
         $scope.enddate = new Date();
-        $scope.enddate.setDate($scope.startdate.getUTCDate() + 6);
+        $scope.enddate.setDate($scope.startdate.getDate() + 6);
         $scope.dateoffset = 'today';
 
 
-        for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getUTCDate() + 1)) {
+        for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getDate() + 1)) {
             $scope.dates.push(new Date(d));
         }
 
@@ -1454,12 +1454,12 @@ angular.module('dbuddies.controllers', [])
         $scope.matches = [];
         $scope.days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         $scope.startdate = new Date();
-        $scope.startdate.setDate($scope.startdate.getUTCDate() + 1);
+        $scope.startdate.setDate($scope.startdate.getDate() + 1);
         $scope.enddate = new Date();
-        $scope.enddate.setDate($scope.startdate.getUTCDate() + 6);
+        $scope.enddate.setDate($scope.startdate.getDate() + 6);
         $scope.today = new Date();
 
-        for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getUTCDate() + 1)) {
+        for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getDate() + 1)) {
             $scope.dates.push(new Date(d));
             if((d.getDay() == 0 || d.getDay() == 1 || d.getDay() == 5 || d.getDay() == 6) && d.getTime() > $scope.today.getTime())
                 $scope.dates_fullround.push(d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2));
@@ -1514,10 +1514,6 @@ angular.module('dbuddies.controllers', [])
 
         $scope.getMatches = function () {
 
-            if($scope.contest.match_date == ('["' + $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2) + '"]')) {
-                return;
-            }
-
             $http({
                 method: 'GET',
                 url: $rootScope.apiUrl + 'matches',
@@ -1568,8 +1564,21 @@ angular.module('dbuddies.controllers', [])
                 params: $scope.contest
             }).then(function (response) {
                 if(response.data.status == 'success') {
-                    alert('Your contest was successfully created! You can join this contest from lobby.');
-                    $state.go('master.lobby');
+                    alert('Your contest was successfully created! You will be redirected now to join this contest.');
+                    $http({
+                        method: 'GET',
+                        url: $rootScope.apiUrl + 'contest/' + response.data.contest_id,
+                        headers: {
+                            'Authorization': 'Bearer ' + sessionStorage.getItem('user_token')
+                        }
+                    }).then(function (response2) {
+                        console.log(response2.data.data);
+                        $rootScope.selectedContest = response2.data.data;
+                        $rootScope.selectedContest.id = response.data.contest_id;
+                        $state.go('master.joincontest');
+                    }, function (error) {
+                        alert('Something went wrong. You can still join this contest from My Contests.')
+                    })
                 }
                 else {
                     alert('Something went wrong. Please try again.');
