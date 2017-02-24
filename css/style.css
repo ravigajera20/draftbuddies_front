@@ -25,6 +25,11 @@ a {
     clear: both;
 }
 
+.disabled_date
+{
+    opacity: 0.6;
+}
+
 .checkbox .cr
 {
     position: relative;

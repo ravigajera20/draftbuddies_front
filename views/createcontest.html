@@ -75,11 +75,11 @@
                     <input class="replace" type="radio" ng-model="contest.match_date" value="{{dates_fullround}}" ng-change="getMultipleMatches()" name="match_day">
                     <div></div>  Full Round
                 </label>
-                <label style="padding: 10px;">
+                <label style="padding: 10px;" ng-class="{'disabled_date': !(matchesonDates[today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)])}">
                     <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" ng-disabled="!(matchesonDates[today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)])" value="{{[today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)]}}" ng-change="getMatches()" name="match_day">
                     <div></div>  Today
                 </label>
-                <label style="padding: 10px;" ng-repeat="cdate in dates">
+                <label style="padding: 10px;" ng-class="{'disabled_date': !(matchesonDates[cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)])}" ng-repeat="cdate in dates">
                     <input class="replace" type="radio" ng-model="contest.match_date" ng-disabled="!(matchesonDates[cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)])" value="{{[cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)]}}" ng-change="getMatches()" name="match_day">
                     <div></div>  {{ days[cdate.getDay()] + ' , ' + cdate.getDate() + '/' + (cdate.getMonth() + 1)}}
                 </label>
