@@ -46,7 +46,7 @@
                     <ul rn-carousel rn-carousel-controls style="height: 150px; padding-top: 30px;" class="image">
                         <li ng-repeat="league in leagues">
                             <label class="layer">
-                                <input class="custom" type="radio" ng-model="contest.competition_id" name="league" ng-change="getMatches()" value="{{league.id}}">
+                                <input class="custom" type="radio" ng-model="contest.competition_id" name="league" ng-change="getMatchesPre()" value="{{league.id}}">
                                 <div class="text-center">
                                     <img src="images/{{league.code}}.png" alt="Premier League" title="Premier League">
                                     <br>
@@ -72,16 +72,16 @@
             </div>
             <div class="row text-center">
                 <label style="padding: 10px;">
-                    <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" value="{{[today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)]}}" ng-change="getMatches()" name="match_day">
+                    <input class="replace" type="radio" ng-model="contest.match_date" value="{{dates_fullround}}" ng-change="getMultipleMatches()" name="match_day">
+                    <div></div>  Full Round
+                </label>
+                <label style="padding: 10px;">
+                    <input class="replace" type="radio" ng-checked="true" ng-model="contest.match_date" ng-disabled="!(matchesonDates[today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)])" value="{{[today.getUTCFullYear() + '-' + ('0' + (today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + today.getUTCDate()).slice(-2)]}}" ng-change="getMatches()" name="match_day">
                     <div></div>  Today
                 </label>
                 <label style="padding: 10px;" ng-repeat="cdate in dates">
-                    <input class="replace" type="radio" ng-model="contest.match_date" value="{{[cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)]}}" ng-change="getMatches()" name="match_day">
-                    <div></div>  {{ days[cdate.getDay()] + ' , ' + cdate.getDate() + '/' + cdate.getMonth()}}
-                </label>
-                <label style="padding: 10px;">
-                    <input class="replace" type="radio" ng-model="contest.match_date" value="{{dates_fullround}}" ng-change="getMultipleMatches()" name="match_day">
-                    <div></div>  Full Round
+                    <input class="replace" type="radio" ng-model="contest.match_date" ng-disabled="!(matchesonDates[cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)])" value="{{[cdate.getUTCFullYear() + '-' + ('0' + (cdate.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + cdate.getUTCDate()).slice(-2)]}}" ng-change="getMatches()" name="match_day">
+                    <div></div>  {{ days[cdate.getDay()] + ' , ' + cdate.getDate() + '/' + (cdate.getMonth() + 1)}}
                 </label>
             </div>
                 <div class="col-md-3" ng-repeat="match in matches">
@@ -155,40 +155,7 @@
 <div class="container-fluid footer">
     <div class="footer_container">
 
-        <div class="col-md-3 col-xs-6">
-            <h4 class="footerlinkheader">About</h4>
-            <ul class="footerlink">
-                <li><a  href="#">About Draftbuddies</a></li>
-                <li><a  href="#">Contact us</a></li>
-                <li><a  href="#">How to play</a></li>
-            </ul>
-        </div>
 
-        <div class="col-md-3 col-xs-6">
-            <h4 class="footerlinkheader">Help</h4>
-            <ul class="footerlink">
-                <li><a  href="#">Terms of use</a></li>
-                <li><a  href="#">Privacy policy</a></li>
-                <li><a  href="#">Responsible gaming</a></li>
-            </ul>
-        </div>
-
-        <div class="col-md-3 col-xs-6">
-            <h4 class="footerlinkheader">Social Media</h4>
-            <ul class="footerlink">
-                <li><a  href="#"><img src="images/fb.png" class="footerlinkicon" />Facebook</a></li>
-                <li><a  href="#"><img src="images/tw.png" class="footerlinkicon" />Twitter</a></li>
-                <li><a  href="#"><img src="images/insta.png" class="footerlinkicon" />Instagram</a></li>
-            </ul>
-        </div>
-
-        <div class="col-md-3 col-xs-6">
-            <h4 class="footerlinkheader">Available on</h4>
-            <ul class="footerlink">
-                <li><img src="images/playstore.png" class="appstore"  /> </li>
-                <li><img src="images/apple.png"  class="appstore"/> </li>
-            </ul>
-        </div>
 
     </div>
 

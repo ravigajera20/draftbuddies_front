@@ -668,7 +668,7 @@ angular.module('dbuddies.controllers', [])
 
                                 }
                                 $rootScope.loggedin = true;
-                                $state.go('master.mycontests');
+                                $state.go('master.lobby');
 
                             }
                             else {
@@ -1303,6 +1303,7 @@ angular.module('dbuddies.controllers', [])
 
         $scope.contests = [];
         $scope.dates = [];
+        $scope.dates_fullround = [];
         $scope.matches = [];
         $scope.days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         $scope.startdate = new Date();
@@ -1310,13 +1311,12 @@ angular.module('dbuddies.controllers', [])
         $scope.enddate = new Date();
         $scope.enddate.setDate($scope.startdate.getDate() + 6);
         $scope.dateoffset = 'today';
+        $scope.today = new Date();
 
 
         for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getDate() + 1)) {
             $scope.dates.push(new Date(d));
         }
-
-        $scope.today = new Date();
 
         $scope.contest = {
             match_date: $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2)
@@ -1450,6 +1450,8 @@ angular.module('dbuddies.controllers', [])
 
         $scope.leagues = [];
         $scope.dates = [];
+        $scope.dates_readable = [];
+        $scope.matchesonDates = [];
         $scope.dates_fullround = [];
         $scope.matches = [];
         $scope.days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -1461,6 +1463,8 @@ angular.module('dbuddies.controllers', [])
 
         for(var d = $scope.startdate; d < $scope.enddate; d.setDate(d.getDate() + 1)) {
             $scope.dates.push(new Date(d));
+            $scope.dates_readable.push(d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2));
+
             if((d.getDay() == 0 || d.getDay() == 1 || d.getDay() == 5 || d.getDay() == 6) && d.getTime() > $scope.today.getTime())
                 $scope.dates_fullround.push(d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2));
         }
@@ -1512,12 +1516,10 @@ angular.module('dbuddies.controllers', [])
             }
         }
 
-        $scope.getMatches = function () {
+        $scope.getMatchesPre = function () {
 
-            if($scope.contest.match_date == ("[" + $scope.today.getUTCFullYear() + '-' + ('0' + ($scope.today.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + $scope.today.getUTCDate()).slice(-2) + "]")) {
-                return;
-            }
-            
+            $scope.matchesonDates = [];
+
             $http({
                 method: 'GET',
                 url: $rootScope.apiUrl + 'matches',
@@ -1530,7 +1532,7 @@ angular.module('dbuddies.controllers', [])
                     value.scheduled_on = new Date(value.scheduled_on);
                 })
 
-                if($scope.matches.length < 2 && $scope.contest.type == 'pick_8') {
+                if(response.data.data.length < 2 && $scope.contest.type == 'pick_8') {
                     alert('This date does not have enough matches to create a Pick 8 contest! Pick another date.');
                 }
                 else {
@@ -1539,6 +1541,56 @@ angular.module('dbuddies.controllers', [])
 
             }, function (error) {
             })
+
+            $scope.tempdate = new Date();
+            $scope.timeDiff = Math.abs($scope.enddate.getTime() - $scope.tempdate.getTime());
+            $scope.diffDays = Math.ceil($scope.timeDiff / (1000 * 3600 * 24));
+
+            $http({
+                method: 'GET',
+                url: $rootScope.apiUrl + 'matches',
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('user_token')
+                },
+                params: {
+                    competition_id: $scope.contest.competition_id,
+                    match_date: JSON.stringify($scope.dates_readable),
+                    type: $scope.contest.type
+                }
+            }).then(function (response) {
+                response.data.data.forEach(function (value, index) {
+                    value.scheduled_on = value.scheduled_on.split(' ')[0];
+                    $scope.matchesonDates[value.scheduled_on] = value;
+                })
+
+            }, function (error) {
+            })
+        }
+
+        $scope.getMatches = function (arg) {
+
+            $http({
+                method: 'GET',
+                url: $rootScope.apiUrl + 'matches',
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('user_token')
+                },
+                params: $scope.contest
+            }).then(function (response) {
+                response.data.data.forEach(function (value, index) {
+                    value.scheduled_on = new Date(value.scheduled_on);
+                })
+
+                if(response.data.data.length < 2 && $scope.contest.type == 'pick_8') {
+                    alert('This date does not have enough matches to create a Pick 8 contest! Pick another date.');
+                }
+                else {
+                    $scope.matches = response.data.data;
+                }
+
+            }, function (error) {
+            })
+
         }
 
         $scope.getMultipleMatches = function () {
